@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+- Trimmed map skill from 210 to 89 lines for lower token cost with same output quality
+- Added `docs/codebase-architecture.md` for this repo
+
 ## 1.0.2
 
 - Simplified CLAUDE.md scaffold to avoid duplicating hook reminders
