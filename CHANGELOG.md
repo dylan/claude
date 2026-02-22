@@ -7,6 +7,7 @@
 - Added `.gitattributes` for consistent LF line endings
 - Added `CHANGELOG.md`
 - Added `.claude` to `.gitignore`
+- Improved markdown formatting in map skill
 
 ## 1.0.1
 
