@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "(add|fix|implement|refactor|create|build|update|change|modify|remove|delete|rename|move|extract|replace|rewrite|migrate|convert|introduce|wire|connect|integrate|feat|bug|chore)\\b",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'${CLAUDE_PLUGIN_ROOT}/hooks/check-architecture-doc.sh'",
+            "async": false
+          }
+        ]
+      }
+    ]
+  }
+}
