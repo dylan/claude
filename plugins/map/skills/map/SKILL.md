@@ -41,18 +41,21 @@ digraph map {
 ### Step 1: Detect
 
 Check for `docs/codebase-architecture.md` and `.claude/CLAUDE.md`.
+
 - Both exist → offer to **audit** (check stale `file:line` refs, missing files, undocumented additions)
 - Missing → proceed to bootstrap
 
 ### Step 2: Auto-detect stack
 
 Scan for config files to identify languages, frameworks, build tools, package managers:
+
 - `mix.exs`, `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `Gemfile`, `pom.xml`, `build.gradle`, `Makefile`, `Dockerfile`, `docker-compose.yml`, etc.
 - Extract: project name, dependencies, available scripts/tasks, test commands
 
 ### Step 3: Explore codebase
 
 Use subagents to build a complete picture. Discover:
+
 - **Entry points** — where does execution start? (HTTP handlers, CLI commands, event listeners, main functions)
 - **Processing layers** — what do requests/commands pass through?
 - **State management** — where is state defined, stored, mutated?
@@ -63,6 +66,7 @@ Use subagents to build a complete picture. Discover:
 ### Step 4: Ask targeted questions
 
 One at a time. Focus on what exploration couldn't answer:
+
 - What is this project? (one sentence)
 - What are the 3-5 most common tasks a developer does in this codebase?
 - Any key architectural decisions that aren't obvious from the code?
@@ -98,6 +102,7 @@ Build, test, lint, format, REPL — whatever the project actually uses.
 Tables grouped by domain concern (not directory structure). Every source file gets a one-line Role.
 
 **Capture within each group:**
+
 - Subsystem enumerations — list valid values for key union types, enum-like constants, category sets
 - Note shared/reused components and where they're consumed
 
@@ -106,6 +111,7 @@ Tables grouped by domain concern (not directory structure). Every source file ge
 Include when the project has layered processing (web apps, event systems, pipelines, CLI tools with middleware).
 
 **Discovery checklist:**
+
 - [ ] Entry points (HTTP handler, CLI command, event listener, WebSocket, queue consumer)
 - [ ] Processing layers (middleware, coordinators, services, state managers)
 - [ ] Output channels (response, broadcast, side-effect, push event)
@@ -120,6 +126,7 @@ Include when the project manages non-trivial state (game servers, real-time apps
 **Format:** Describe structures as compact key-type tables or one-line summaries with `file:line` refs. **Do NOT reproduce struct/type definitions as pseudo-code blocks** — point at the source definition instead. A table row like `cards: %{id => card_map} — polymorphic, see importer.ex:240` is better than a 20-line struct layout.
 
 **Discovery checklist:**
+
 - [ ] Init location (`file:line` where state is constructed with defaults)
 - [ ] Key maps/collections and what they contain (as a table, not code)
 - [ ] Polymorphic collections — maps holding mixed-shape entries (flag explicitly)
@@ -131,6 +138,7 @@ Include when the project manages non-trivial state (game servers, real-time apps
 Include when there's a mapping layer between external interface and internal handlers (LiveView events, REST endpoints, GraphQL resolvers, CLI subcommands, message handlers).
 
 **Discovery checklist:**
+
 - [ ] Category groupings (by domain, not alphabetical)
 - [ ] Surface format → internal format mapping
 - [ ] Naming conventions across boundaries
@@ -142,6 +150,7 @@ Include when there's a mapping layer between external interface and internal han
 Include when there's a composition root pattern, dependency graph, or non-obvious module coupling.
 
 **Discovery checklist:**
+
 - [ ] Composition root(s) — what creates/wires everything
 - [ ] Dependency direction — who depends on whom
 - [ ] **Inline "why" notes** for non-obvious coupling or deliberate decoupling
@@ -152,6 +161,7 @@ Include when there's a composition root pattern, dependency graph, or non-obviou
 Include when there are repeatable patterns for extending the codebase. This is the **highest-value section**.
 
 **Discovery checklist:**
+
 - [ ] Identify recipes by examining: recent commits, test file patterns, repeated file-edit patterns, framework conventions
 - [ ] Trace the full path from surface to storage for each recipe
 - [ ] Numbered steps with `file:line` references
@@ -172,8 +182,6 @@ Include when there are repeatable patterns for extending the codebase. This is t
 ### Auto-filled
 
 - Project name + one-line description
-- Architecture reference link:
-  > **Architecture Reference:** [docs/codebase-architecture.md](../docs/codebase-architecture.md) — check here first before grepping or exploring. Has file inventory, data flow, and task recipes with `file:line` references.
 - Validation commands with working directory context
 - Key stack/integration callouts (from config files)
 
@@ -181,14 +189,17 @@ Include when there are repeatable patterns for extending the codebase. This is t
 
 ```markdown
 ## Architecture Principles
+
 <!-- Emerge from real work. Reference source, e.g.:
      "Compose existing ops before new endpoints — see handler.ex:744" -->
 
 ## Learned Patterns
+
 <!-- Capture after corrections. Point at canonical examples, e.g.:
      "Side-effect fns should return state — see broadcast: server.ex:2471" -->
 
 ## Gotchas
+
 <!-- Landmines found through bugs. Include the location, e.g.:
      "Bracket access on mixed-shape maps — see iteration: server.ex:923" -->
 ```
