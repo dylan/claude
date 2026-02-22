@@ -173,7 +173,7 @@ Include when there are repeatable patterns for extending the codebase. This is t
 
 - Project name + one-line description
 - Architecture reference link:
-  > **Architecture Reference:** Always read [docs/codebase-architecture.md](../docs/codebase-architecture.md) first when navigating the codebase. **Keep it up to date** whenever you add, significantly modify, rename, or remove files. Use `file:line` references to actual source — in both the architecture doc and in this file. Update line numbers when edits shift them. Only use inline examples when the pattern is a one-liner with no source location.
+  > **Architecture Reference:** [docs/codebase-architecture.md](../docs/codebase-architecture.md) — check here first before grepping or exploring. Has file inventory, data flow, and task recipes with `file:line` references.
 - Validation commands with working directory context
 - Key stack/integration callouts (from config files)
 
