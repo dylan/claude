@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.5
+
+- Widened SubagentStart matcher to include Explore and Plan agents
+- Added SessionStart compact hook to re-inject arch doc context after compaction
+- Added Stop hook to check if arch doc was updated when source files change
+- New script: `check-arch-doc-updated.sh`
+
 ## 1.0.4
 
 - Fixed UserPromptSubmit hook matcher (matchers are silently ignored for this event per docs)

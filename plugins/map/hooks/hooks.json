@@ -13,11 +13,32 @@
     ],
     "SubagentStart": [
       {
-        "matcher": "general-purpose",
+        "matcher": "general-purpose|Explore|Plan",
         "hooks": [
           {
             "type": "command",
             "command": "'${CLAUDE_PLUGIN_ROOT}/hooks/check-architecture-doc.sh'"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'${CLAUDE_PLUGIN_ROOT}/hooks/check-architecture-doc.sh'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'${CLAUDE_PLUGIN_ROOT}/hooks/check-arch-doc-updated.sh'"
           }
         ]
       }

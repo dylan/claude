@@ -6,6 +6,8 @@
 INPUT=$(cat)
 HOOK_EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // empty')
 
+# For SessionStart (compact): skip action filter, always re-inject arch doc context
+# For SubagentStart: skip filter — matcher in hooks.json handles targeting
 # For UserPromptSubmit: filter to action-oriented prompts only
 # (UserPromptSubmit doesn't support matchers, so we filter here)
 if [ "$HOOK_EVENT" = "UserPromptSubmit" ]; then
@@ -67,6 +69,6 @@ if [ "$HOOK_EVENT" = "SubagentStart" ]; then
     }
   }'
 else
-  # UserPromptSubmit: plain text stdout is added as context
+  # UserPromptSubmit / SessionStart: plain text stdout is added as context
   echo "$MESSAGE"
 fi
