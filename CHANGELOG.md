@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.4
+
+- Fixed UserPromptSubmit hook matcher (matchers are silently ignored for this event per docs)
+- Moved action-verb regex filtering into the shell script itself
+- Added SubagentStart hook so general-purpose subagents also get the architecture doc reminder
+- Hook script now detects event type and outputs appropriate format (plain text vs JSON additionalContext)
+
 ## 1.0.3
 
 - Trimmed map skill from 210 to 89 lines for lower token cost with same output quality
