@@ -16,6 +16,12 @@ if [ "$HOOK_EVENT" = "UserPromptSubmit" ]; then
   if [ -n "$PROMPT" ] && ! echo "$PROMPT" | grep -qiE "(^|[^a-z])($ACTION_PATTERN)([^a-z]|$)"; then
     exit 0
   fi
+
+  # Only remind when source files have actually been modified
+  SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+  # shellcheck source=lib/has-source-changes.sh
+  source "${SCRIPT_DIR}/lib/has-source-changes.sh"
+  has_source_changes || exit 0
 fi
 
 ARCH_DOC="docs/codebase-architecture.md"

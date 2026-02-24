@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.6
+
+- Added git change detection gate to UserPromptSubmit hook (no reminder in clean repos)
+- Extracted shared `has-source-changes.sh` utility for consistent change detection
+- Added SessionStart(startup) hook for one-time reminder at session start
+- Refactored Stop hook to use shared change detection utility
+
 ## 1.0.5
 
 - Widened SubagentStart matcher to include Explore and Plan agents
