@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.7
+
+- Removed `has_source_changes` gate from UserPromptSubmit — reminder now fires before changes, not only after
+- Added `record-session-baseline.sh` to record HEAD on SessionStart(startup) for committed change tracking
+- Stop hook now detects committed changes across the session (not just uncommitted) using baseline comparison
+- Added `has_source_changes_since()` function to shared utility for baseline-aware change detection
+
 ## 1.0.6
 
 - Added git change detection gate to UserPromptSubmit hook (no reminder in clean repos)

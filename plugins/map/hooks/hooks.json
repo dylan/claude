@@ -29,6 +29,10 @@
           {
             "type": "command",
             "command": "'${CLAUDE_PLUGIN_ROOT}/hooks/check-architecture-doc.sh'"
+          },
+          {
+            "type": "command",
+            "command": "'${CLAUDE_PLUGIN_ROOT}/hooks/record-session-baseline.sh'"
           }
         ]
       },
