@@ -64,6 +64,7 @@
           {
             "type": "agent",
             "prompt": "Verify that the architecture document has been updated. If it has, respond with {'ok': 'Architecture document is updated.'} If it has not, respond with {'error': 'Architecture document is not updated.'}, and proceed to update the document before completing the work.",
+            "statusMessage": "Checking architecture document update...",
             "timeout": 120
           }
         ]

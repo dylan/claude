@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.9
+
+- Removed `docs/codebase-architecture.md` from version control (generated file, now gitignored)
+- Added `statusMessage` to Stop agent hook for visible progress feedback
+
 ## 1.0.8
 
 - Added PreToolUse agent hook for Grep — checks architecture doc before grepping to avoid redundant searches
