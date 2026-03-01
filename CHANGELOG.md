@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.10
+
+- Fixed Stop hook firing 3x per turn — added `stop_hook_active` guard and proper `$ARGUMENTS` input
+- Fixed PreToolUse Grep hook parse error caused by stray `}` in prompt string
+- Both agent hooks now use correct `{"ok": true/false}` response format per docs
+
 ## 1.0.9
 
 - Removed `docs/codebase-architecture.md` from version control (generated file, now gitignored)

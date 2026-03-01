@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "agent",
-            "prompt": "Verify that this grep is necessary by cross referencing with the architecture document. If the information is already in the document, respond with {'ok': 'Grep is not necessary.'} If the information is not in the document, proceed as planned.'}",
+            "prompt": "Hook input: $ARGUMENTS\n\nCheck whether this grep is necessary by cross-referencing with the architecture document (docs/codebase-architecture.md). If the information the grep is looking for is already in the architecture document, respond with {\"ok\": false, \"reason\": \"This information is already in the architecture document.\"}. If the information is not in the document and the grep is needed, respond with {\"ok\": true}.",
             "timeout": 120
           }
         ]
@@ -63,7 +63,7 @@
         "hooks": [
           {
             "type": "agent",
-            "prompt": "Verify that the architecture document has been updated. If it has, respond with {'ok': 'Architecture document is updated.'} If it has not, respond with {'error': 'Architecture document is not updated.'}, and proceed to update the document before completing the work.",
+            "prompt": "Hook input: $ARGUMENTS\n\nCheck the stop_hook_active field in the input above. If it is true, respond with {\"ok\": true}. Otherwise, check whether the architecture document (docs/codebase-architecture.md) needs updating based on changes made this session. If it is already up to date or no relevant changes were made, respond with {\"ok\": true}. If it needs updating, respond with {\"ok\": false, \"reason\": \"Architecture document needs updating to reflect changes made this session.\"}.",
             "statusMessage": "Checking architecture document update...",
             "timeout": 120
           }
