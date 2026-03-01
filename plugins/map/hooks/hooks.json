@@ -1,5 +1,17 @@
 {
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Grep",
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "Verify that this grep is necessary by cross referencing with the architecture document. If the information is already in the document, respond with {'ok': 'Grep is not necessary.'} If the information is not in the document, proceed as planned.'}",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
     "UserPromptSubmit": [
       {
         "hooks": [
@@ -50,8 +62,9 @@
       {
         "hooks": [
           {
-            "type": "command",
-            "command": "'${CLAUDE_PLUGIN_ROOT}/hooks/check-arch-doc-updated.sh'"
+            "type": "agent",
+            "prompt": "Verify that the architecture document has been updated. If it has, respond with {'ok': 'Architecture document is updated.'} If it has not, respond with {'error': 'Architecture document is not updated.'}, and proceed to update the document before completing the work.",
+            "timeout": 120
           }
         ]
       }
