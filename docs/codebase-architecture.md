@@ -33,9 +33,9 @@ All commands run from the repo root (`/Users/dylan/Github/claude` or wherever cl
 | ---- | ---- |
 | `plugins/map/.claude-plugin/plugin.json:1` | Plugin manifest — name, description, version, author, keywords |
 | `plugins/map/skills/map/SKILL.md:1` | `/map` skill definition — the full prompt that drives architecture doc generation |
-| `plugins/map/hooks/hooks.json:1` | Hook config — binds `UserPromptSubmit`, `SubagentStart`, `SessionStart`, and `Stop` to architecture doc hooks |
+| `plugins/map/hooks/hooks.json:1` | Hook config — binds `PreToolUse` (Grep gate), `UserPromptSubmit`, `SubagentStart`, `SessionStart`, and `Stop` to architecture doc hooks |
 | `plugins/map/hooks/check-architecture-doc.sh:1` | Bash hook — checks for `docs/codebase-architecture.md`, reminds Claude (or subagents) to consult it or suggests `/map`. Handles UserPromptSubmit (gated on action keywords), SubagentStart, and SessionStart events with appropriate output format (plain text vs JSON `additionalContext`) |
-| `plugins/map/hooks/check-arch-doc-updated.sh:1` | Bash hook (Stop) — checks if source files were modified (committed or uncommitted) since session baseline without updating the architecture doc. Reads baseline HEAD from session-state, exits with code 2 and a reminder if enforcement triggers, cleans up state file |
+| `plugins/map/hooks/check-arch-doc-updated.sh:1` | Bash hook (Stop, unused) — checks if source files were modified since session baseline without updating the architecture doc. Superseded by agent-based Stop hook in hooks.json but retained for reference |
 | `plugins/map/hooks/record-session-baseline.sh:1` | Bash hook (SessionStart/startup) — records `git rev-parse HEAD` to a project-scoped state file so the Stop hook can detect committed changes across the session |
 | `plugins/map/hooks/lib/has-source-changes.sh:1` | Shared utility — `has_source_changes()` for uncommitted changes, `has_source_changes_since(BASE)` for committed+uncommitted changes since a base commit. Both exclude docs/*, *.md, .claude/*, .gitignore, .gitattributes. Sourced by hook scripts |
 

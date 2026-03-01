@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.8
+
+- Added PreToolUse agent hook for Grep — checks architecture doc before grepping to avoid redundant searches
+- Replaced Stop shell hook (`check-arch-doc-updated.sh`) with agent-based hook for contextual architecture doc verification
+
 ## 1.0.7
 
 - Removed `has_source_changes` gate from UserPromptSubmit — reminder now fires before changes, not only after
