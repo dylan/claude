@@ -7,8 +7,8 @@
     {
       "name": "map",
       "source": "./plugins/map",
-      "description": "Codebase architecture generator and enforcement. Creates docs/codebase-architecture.md and .claude/CLAUDE.md, then enforces architecture-doc-first development via prompt hooks.",
-      "version": "1.0.10",
+      "description": "Codebase architecture generator. Creates docs/codebase-architecture.md and .claude/CLAUDE.md by exploring source and asking targeted questions.",
+      "version": "1.1.0",
       "author": {
         "name": "Dylan"
       },

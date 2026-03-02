@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+- Removed all hooks (PreToolUse Grep gate, UserPromptSubmit, SubagentStart, SessionStart, Stop)
+- Removed all enforcement shell scripts (check-architecture-doc.sh, check-arch-doc-updated.sh, record-session-baseline.sh, lib/has-source-changes.sh)
+- Plugin is now generation-only — no runtime enforcement overhead
+- Architecture doc guidance now lives in auto-memory instead of hooks
+
 ## 1.0.10
 
 - Fixed Stop hook firing 3x per turn — added `stop_hook_active` guard and proper `$ARGUMENTS` input
