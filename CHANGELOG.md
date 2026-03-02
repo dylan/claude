@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+- Added CLAUDE.md scaffold guidance: auto-memory usage, keeping architecture doc lean, update frequency
+- Added authoring guidelines section to architecture doc catalog (lean doc, use `file:line` refs)
+
 ## 1.1.0
 
 - Removed all hooks (PreToolUse Grep gate, UserPromptSubmit, SubagentStart, SessionStart, Stop)

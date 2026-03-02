@@ -47,6 +47,9 @@ Write `docs/codebase-architecture.md` using the section catalog below.
 
 Write `.claude/CLAUDE.md`:
 
+- **Use auto memory** to remember to reference the architecture doc when searching, and to update it when making changes.
+- **Keep the architecture doc lean.** Only the most essential, high-level info goes in the architecture doc. The CLAUDE.md is where the "wisdom" lives — detailed recipes, patterns, gotchas, and other insights that don't fit the architecture doc's format.
+- **Update frequency:** When to update the architecture doc vs when to just update CLAUDE.md with new recipes, patterns, or gotchas.
 - **Auto-filled:** Project name + one-line description, validation commands with working directory context, key stack/integration callouts
 - **Empty wisdom sections:** Architecture Principles, Learned Patterns, Gotchas — each with a comment showing the expected format (one-line example with `file:line` ref)
 - **Excluded:** Generic advice, stack-specific skill references, personal workflow preferences
@@ -58,6 +61,11 @@ Present both files. User refines. Commit when approved.
 ---
 
 ## Architecture Doc — Section Catalog
+
+### Authoring Guidelines for the architecture doc itself:
+
+- **Keep it lean.** Only the most essential, high-level info goes in the architecture doc. The CLAUDE.md is where the "wisdom" lives — detailed recipes, patterns, gotchas, and other insights that don't fit the architecture doc's format.
+- **Use `file:line` refs.** Don't reproduce info that's already in the source. Point at it with `file:line`.
 
 ### Required: Header
 
