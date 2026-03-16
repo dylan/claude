@@ -63,4 +63,4 @@ GPU & Metal expert consultant — researches topics, reviews shader code, and ma
 
 Combines Apple documentation (via [sosumi MCP](https://github.com/nichochar/sosumi)), a persistent [NotebookLM](https://notebooklm.google.com/) knowledge base, and codebase analysis to answer GPU/Metal questions, review Metal code, and research GPU topics — all through the lens of Apple Silicon.
 
-**Requirements:** sosumi MCP server and `notebooklm` CLI (authenticated). The skill degrades gracefully if either is unavailable.
+**Requirements:** sosumi MCP server, `notebooklm` CLI (authenticated), and the [notebooklm-skill](https://github.com/PleasePrompto/notebooklm-skill) Claude Code skill. The skill degrades gracefully if sosumi or NotebookLM is unavailable.

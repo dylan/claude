@@ -23,7 +23,7 @@ Research GPU/Metal topics, review shader and Metal code, and maintain a Notebook
 Test availability of external tools before relying on them.
 
 - **sosumi MCP:** Call `mcp__sosumi__searchAppleDocumentation` with query `"Metal"`. If it errors, mark sosumi as unavailable.
-- **NotebookLM CLI:** Run `notebooklm status` via `Bash`. If it errors, mark NotebookLM as unavailable and suggest `notebooklm login`.
+- **NotebookLM CLI:** Run `notebooklm status` via `Bash`. If it errors, mark NotebookLM as unavailable and suggest installing the [notebooklm-skill](https://github.com/PleasePrompto/notebooklm-skill) and running `notebooklm login`.
 - If both are unavailable, warn the user: "I can still help using my own knowledge and your codebase, but I won't be able to consult Apple docs or your NotebookLM knowledge base. All claims will be marked as [Novel]."
 
 ### Step 2: Discover NotebookLM Knowledge Base
@@ -123,7 +123,7 @@ After completing the primary task, assess whether the knowledge base needs atten
 | NotebookLM Source Wait | Bash CLI | `notebooklm source wait <source_id> -n <id> --timeout 120` | Waiting for source processing (use in background agents) |
 | Codebase | Claude Code tools | `Glob`, `Grep`, `Read` | Finding and reviewing `.metal` files, Metal API usage in Swift/ObjC |
 
-**NotebookLM CLI convention:** Always use `--json` for parseable output. Always pass `--notebook <id>` explicitly — never rely on `notebooklm use` context.
+**NotebookLM CLI convention:** Always use `--json` for parseable output. Always pass `--notebook <id>` explicitly — never rely on `notebooklm use` context. NotebookLM integration is provided by the [notebooklm-skill](https://github.com/PleasePrompto/notebooklm-skill).
 
 ## Agent Teams
 
