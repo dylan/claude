@@ -13,6 +13,16 @@
         "name": "Dylan"
       },
       "keywords": ["architecture", "documentation", "onboarding", "codebase-map"]
+    },
+    {
+      "name": "gpu-expert",
+      "source": "./plugins/gpu-expert",
+      "description": "GPU and Metal expert consultant. Researches topics, reviews shader and Metal code, and maintains a NotebookLM knowledge base — all through the lens of Apple Silicon.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dylan"
+      },
+      "keywords": ["gpu", "metal", "shader", "apple-silicon", "msl", "compute", "graphics"]
     }
   ]
 }
