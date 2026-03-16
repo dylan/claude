@@ -52,3 +52,15 @@ Generates codebase architecture docs and enforces architecture-doc-first develop
 - **Project vocabulary** — uses your project's own names
 - **ASCII diagrams** — no Mermaid, no images
 - **Conditional sections** — includes what's relevant, skips what isn't
+
+## gpu-expert
+
+GPU & Metal expert consultant — researches topics, reviews shader code, and maintains a NotebookLM knowledge base.
+
+```sh
+/plugin install gpu-expert@dylan
+```
+
+Combines Apple documentation (via [sosumi MCP](https://github.com/nichochar/sosumi)), a persistent [NotebookLM](https://notebooklm.google.com/) knowledge base, and codebase analysis to answer GPU/Metal questions, review Metal code, and research GPU topics — all through the lens of Apple Silicon.
+
+**Requirements:** sosumi MCP server and `notebooklm` CLI (authenticated). The skill degrades gracefully if either is unavailable.
