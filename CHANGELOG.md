@@ -1,5 +1,15 @@
 # Changelog
 
+## gpu-expert v1.0.0 — 2026-03-15
+
+- **New plugin:** GPU & Metal expert consultant
+- Researches GPU/Metal topics via Apple docs (sosumi MCP) and NotebookLM knowledge base
+- Reviews `.metal` shaders and Metal API usage in Swift/ObjC
+- Confidence/citation system: T1 (Apple official), T2 (well-supported external), T3 (external opinion), Novel (own reasoning)
+- Hybrid NotebookLM strategy: discovers existing notebooks, creates focused ones for deep dives
+- Agent team patterns for parallel research and review
+- Graceful degradation when sosumi or NotebookLM unavailable
+
 ## 1.1.1
 
 - Added CLAUDE.md scaffold guidance: auto-memory usage, keeping architecture doc lean, update frequency
