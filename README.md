@@ -64,3 +64,22 @@ GPU & Metal expert consultant — researches topics, reviews shader code, and ma
 Combines Apple documentation (via [sosumi MCP](https://github.com/nichochar/sosumi)), a persistent [NotebookLM](https://notebooklm.google.com/) knowledge base, and codebase analysis to answer GPU/Metal questions, review Metal code, and research GPU topics — all through the lens of Apple Silicon.
 
 **Requirements:** sosumi MCP server, `notebooklm` CLI (authenticated), and the [notebooklm-skill](https://github.com/PleasePrompto/notebooklm-skill) Claude Code skill. The skill degrades gracefully if sosumi or NotebookLM is unavailable.
+
+## swift-api-design
+
+Swift API Design Guidelines enforcer — active whenever you're writing, reviewing, or designing Swift code.
+
+```sh
+/plugin install swift-api-design@dylan
+```
+
+Enforces the [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/) at every scope level — public APIs, internal helpers, local functions, closures, tuple members. Calls out violations with the specific guideline broken and a concrete rewrite. No hedging.
+
+**What it covers:**
+- Naming: clarity at the call site, role vs. type names, fluency, Boolean readability
+- Argument labels: prepositional phrases, grammatical phrases, value-preserving conversions
+- Conventions: casing, factory methods, mutating/nonmutating pairs, protocol naming
+- Documentation: presence and quality of doc comments
+- Overloads: ambiguous overload sets with `Any` or unconstrained generics
+
+**What it doesn't cover:** Protocol-oriented design choices, generics architecture, performance, memory management. Guidelines scope only.

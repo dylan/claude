@@ -23,6 +23,16 @@
         "name": "Dylan"
       },
       "keywords": ["gpu", "metal", "shader", "apple-silicon", "msl", "compute", "graphics"]
+    },
+    {
+      "name": "swift-api-design",
+      "source": "./plugins/swift-api-design",
+      "description": "Swift API Design Guidelines enforcer. Active whenever writing, reviewing, or designing Swift code — calls out naming, argument label, fluency, and convention violations with specific rewrites.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dylan"
+      },
+      "keywords": ["swift", "api-design", "naming", "conventions", "code-review", "ios", "macos"]
     }
   ]
 }

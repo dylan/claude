@@ -1,5 +1,13 @@
 # Changelog
 
+## swift-api-design v1.0.0 — 2026-03-19
+
+- **New plugin:** Swift API Design Guidelines enforcer
+- Always-on during any Swift work — writing, reviewing, or designing at any scope level
+- Full checklist covering naming, argument labels, fluency, conventions, documentation, and overloads
+- Every finding cites the specific guideline broken with a concrete suggested rewrite
+- Guidelines-scoped only: naming and API surface, not language features or architecture opinions
+
 ## gpu-expert v1.0.0 — 2026-03-15
 
 - **New plugin:** GPU & Metal expert consultant
