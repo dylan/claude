@@ -59,7 +59,7 @@ own affordances (tabs, drawers, gestures). Resolve numbers via the value-resolut
 
 ## Review — what to look for
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; tunable choices are judged as fit or misfit to the intent.*
+*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
 
 - Does the structure mirror the user's mental model / objects, or the org chart / database?
 - Is breadth-vs-depth deliberate; are category counts set by scope and findability (not a magic number)?

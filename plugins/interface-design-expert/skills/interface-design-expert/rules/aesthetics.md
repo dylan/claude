@@ -57,7 +57,7 @@ image). Because beauty **masks problems**, judge appeal *separately from and aft
 
 ## Review — what to look for
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; tunable choices are judged as fit or misfit to the intent.*
+*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
 
 - **Squint test:** can you find the single focal point in ~1 second? Does one thing clearly lead?
 - Does the frame feel weighted to one side without intent (visual balance)?

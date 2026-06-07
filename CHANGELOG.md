@@ -1,5 +1,11 @@
 # Changelog
 
+## interface-design-expert v1.1.0 — 2026-06-07
+
+- Named a third principle posture — **opportunities** (tools applied when they help) alongside floors (always hold) and dials (tune to intent); an opportunity's absence is never a defect
+- Motion: added continuity / shared-element transitions (e.g. a card expanding to fill the screen) as an explicit usability *opportunity* — reach for it when it helps, with a reduced-motion fallback
+- Reframed every lens's review checklist so optional techniques are judged "would this help here?" rather than as presence/absence checkboxes
+
 ## interface-design-expert v1.0.0 — 2026-06-07
 
 - **New plugin:** general-purpose interface design & review expert

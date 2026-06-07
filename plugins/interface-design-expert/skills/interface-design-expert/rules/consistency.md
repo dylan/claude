@@ -29,7 +29,7 @@ the others. Achieve it structurally. Resolve numbers via the value-resolution ru
 
 ## Review — what to look for
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; tunable choices are judged as fit or misfit to the intent.*
+*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
 
 - Is the work grounded in a shared design language, or a patchwork of one-offs?
 - Are decisions expressed as named tokens, with UIs assembled from shared components rather than ad-hoc primitives?

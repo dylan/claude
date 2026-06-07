@@ -38,7 +38,7 @@ Drive type from a **system, not ad-hoc choices**. Resolve numbers via the value-
 
 ## Review — what to look for
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; tunable choices are judged as fit or misfit to the intent.*
+*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
 
 - Is type drawn from a finite, tokenized scale, or ad-hoc sizes/weights?
 - Is there impactful contrast between adjacent sizes — any near-duplicate steps?

@@ -3,7 +3,7 @@ name: interface-design-expert
 description: Modern, general-purpose UI/UX design expertise for any kind of interface — web, native desktop (macOS, Windows, Linux), mobile, games, terminal/TUI, voice, and emerging surfaces. Use it to DESIGN new interfaces and to REVIEW/critique existing ones (a screenshot, a described concept, or live code) across multiple design dimensions at once — layout, typography, color & theming, accessibility, interaction & motion, content & voice, navigation & information architecture, consistency, and aesthetics & visual composition — grounded in cognitive & perceptual foundations. Self-contained and built to hand off to a review agent (one lens per agent, in parallel). Reach for it to review/critique an interface, design a UI or design system, choose design principles/tokens, or reason about UX from first principles. Prefer the platform skills (ios/ipados/macos/web-design-guidelines) when the work targets exactly one of those platforms.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Interface Design Expert
@@ -88,6 +88,11 @@ restraint; novelty vs. convention), so judge them **weighted by intent**, not as
   - **Dials (tune to intent):** information density ↔ whitespace; guidance ↔ minimalism; motion
     restraint ↔ expressiveness; ornament ↔ restraint; convention ↔ novelty; breadth ↔ depth;
     consistency ↔ bespoke moments. Most legitimate "compromises" are dial settings, not floor breaches.
+  - **Opportunities (tools, not requirements):** techniques you reach for *when they'd help* —
+    continuity / shared-element transitions, expressive delight moments, dynamic theming, coachmarks,
+    deeper progressive disclosure. **Absence is never a defect.** Judge them *"would this help here,
+    and is it well-executed if used?"* — never *"is it present?"* Most of the skill is opportunities
+    and dials applied with judgment; only floors are pass/fail.
 
 - **A deviation is only as good as its reason.** Relaxing a dial to serve the intent is craft;
   relaxing it by accident is a defect. Record which ideal was relaxed, for which goal — turn a
@@ -120,8 +125,9 @@ satisfying the rest.
    Always include the foundations lens as the cross-cutting "why".
 5. **Synthesize, weighted by intent.** Produce findings in the output format below. Separate
    **floor breaches** (defects — call them out regardless of intent) from **dial settings** (judge
-   as *fits / doesn't fit* the stated intent, not as universal faults), and record genuine
-   **tensions** where serving the goal meant relaxing an ideal. Resolve every number via the
+   as *fits / doesn't fit* the stated intent, not as universal faults); treat **opportunities** as
+   optional (a missing one is *not* a finding — at most a suggestion, "this could help"), and record
+   genuine **tensions** where serving the goal meant relaxing an ideal. Resolve every number via the
    value-resolution rule, and flag motion / live-theme-contrast items as "needs runtime check".
 
 ## Designing a new interface

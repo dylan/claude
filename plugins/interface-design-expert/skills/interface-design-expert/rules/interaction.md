@@ -44,6 +44,13 @@ Motion serves function, stays subtle, and respects attention.
 - **Treat motion as a consistent personality, not one-off effects.** Easing and timing carry tone,
   so derive a small shared set of curves and reuse it; keep transitions spatially continuous (a
   panel animates from its real origin), and periodically audit and cut purposeless motion.
+- **Motion can improve usability — reach for it when it helps, not by default (opportunity).**
+  Continuity / shared-element transitions — a tapped card expanding to fill the screen, a thumbnail
+  opening to its detail, a row morphing into an editor — animate the *same object* from its origin so
+  the user keeps their bearings across a context change, preserving object permanence and answering
+  "where did this come from / go?". Most screens don't need this and its **absence is never a
+  defect**; when you do use it, keep it fast and give a reduced-motion fallback (instant cross-fade
+  or cut) so the function survives without the animation.
 - **Remove motion that's noticed too often.** If users consciously notice an animation repeatedly,
   shorten or cut it.
 - **Always honor Reduce Motion.** Provide a non-animated path; never gate function behind motion.
@@ -52,7 +59,7 @@ Motion serves function, stays subtle, and respects attention.
 
 ## Review — what to look for
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; tunable choices are judged as fit or misfit to the intent.*
+*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
 
 - Are the core states present for every interactive element (default/hover/active/focus/disabled)?
 - Are functional states handled where needed (loading/success/error/selected)?
@@ -63,6 +70,7 @@ Motion serves function, stays subtle, and respects attention.
 - Is any state signalled by color alone?
 - Are the bedrock tasks fast and dependable; is complexity revealed progressively?
 - Is motion purposeful and fast for routine actions, using a small shared set of easing tokens?
+- Where a tap changes context, *would* a continuity / shared-element transition help — and if one is used, is it fast with a reduced-motion fallback? (Opportunity — its absence is fine.)
 - Is Reduce Motion honored, and does feedback arrive within a perceptual instant?
 
 ## Values
