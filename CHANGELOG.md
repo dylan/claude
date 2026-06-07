@@ -1,5 +1,27 @@
 # Changelog
 
+## interface-design-expert v1.0.0 — 2026-06-07
+
+- **New plugin:** general-purpose interface design & review expert
+- Nine design dimensions as self-contained, independently-loadable lens files, plus a cognitive & perceptual foundations file; the orchestrator SKILL.md stays lean and loads lenses on demand
+- Works on any interface — web, native desktop (macOS/Windows/Linux), mobile, games, terminal/TUI, voice, spatial — with per-surface value guidance
+- Two modes: multi-dimensional **review** (of a screenshot, concept, or live code) and intent-first **design** (spec + rationale)
+- **Floors-vs-dials** tradeoff model: weight dimensions by the design's intent, hold accessibility/safety/performance floors, tune the rest
+- Built to **hand off to review agents** — one lens per agent in parallel — with a paste-ready briefing template
+- **Value-resolution rule:** never invent a number; resolve by user override → platform default → most-inclusive fallback
+- Aesthetics & visual composition lens with evidence-vs-craft tagging and an anti-masking discipline
+
+## swift-api-design v1.1.0 — 2026-03-19
+
+- Added full Guidelines Reference with good/bad code examples from the official source
+- Added worked example showing three findings end-to-end in the finding format
+- Added two-mode behavior: proactive when writing new code, checklist-based when reviewing
+- Added guidance for weighing guideline feedback against the user's primary request
+- Added accepted exception recognition (sin(x), Array over List, fluency after first two args)
+- Added framework API awareness — don't flag UIKit/SwiftUI/Combine patterns the user can't change
+- Added enum case conventions to the checklist (was in scope but missing)
+- Trimmed checklist parenthetical examples now covered by the reference section
+
 ## swift-api-design v1.0.0 — 2026-03-19
 
 - **New plugin:** Swift API Design Guidelines enforcer
