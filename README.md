@@ -83,3 +83,23 @@ Enforces the [Swift API Design Guidelines](https://www.swift.org/documentation/a
 - Overloads: ambiguous overload sets with `Any` or unconstrained generics
 
 **What it doesn't cover:** Protocol-oriented design choices, generics architecture, performance, memory management. Guidelines scope only.
+
+## interface-design-expert
+
+General-purpose interface design & review expert — designs or critiques any UI, on any platform, across nine design dimensions at once.
+
+```sh
+/plugin install interface-design-expert@dylan
+```
+
+A multi-lens instrument for **designing** and **reviewing** interfaces — web, native desktop (macOS, Windows, Linux), mobile, games, terminal/TUI, voice, and beyond. Give it a screenshot, a described concept, or live UI code and it surveys across nine independent lenses, each a self-contained file loaded on demand, all resting on shared cognitive & perceptual foundations. Built to hand off to review agents — one lens per agent, in parallel.
+
+**The nine dimensions:** layout & visual hierarchy · typography · color & theming · accessibility · interaction, states & motion · content & voice · navigation & information architecture · consistency · aesthetics & visual composition.
+
+**How it thinks:**
+- **Principles are universal, values are resolved** — never invents a number; resolves it by user override → platform default → most-inclusive fallback.
+- **Floors vs. dials** — weights the lenses by the design's stated intent; holds accessibility/safety/performance *floors* while judging tunable *dials* as fit-or-misfit to the goal (so a deliberately dense expert tool isn't dinged for being spartan).
+- **Two modes** — multi-dimensional review (findings with severity + tensions) and intent-first design (spec + rationale).
+- **First-principles foundations** — derives novel solutions from human invariants (working memory, Fitts/Hick, Gestalt, the aesthetic-usability effect) rather than copying conventions.
+
+When the work targets exactly one Apple or web platform, defer to that platform's specific skill instead.
