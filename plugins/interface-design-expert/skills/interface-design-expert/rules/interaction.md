@@ -6,72 +6,105 @@ Resolve numbers via the value-resolution rule in [`../SKILL.md`](../SKILL.md) an
 
 ## Principles — interactive states
 
-Every interactive element needs a deliberate *set* of states, not just a default look — missing
-states are where an interface feels broken.
+Every interactive element needs a deliberate *set* of states — missing states read as broken.
 
-- **Core states (always):** default, hover, active/pressed, focus, disabled.
-- **Functional states (where they apply):** loading, success, error, selected/toggled.
-- **Keep role, style, and state distinct.** A control's *role* (submit, toggle), its *style*
-  (primary / secondary / ghost), and its *state* (hover, disabled…) are independent dimensions — a
-  primary submit button moves through every state without changing role or style.
-- **Affordance:** a control must look interactive in its *default* state. Don't hide that something
-  is clickable until the user hovers it.
-- **Focus is non-negotiable.** Show a visible focus indicator for keyboard and assistive-tech
-  users; never remove it without a clear custom replacement.
-- **Disabled needs a reason.** Pair a disabled control with a tooltip or inline message saying what
-  would unblock it — otherwise users just click a dead button.
-- **Loading and error carry the flow.** Disable during loading to prevent duplicate submissions; an
-  error state must say what went wrong and offer a way to retry.
-- **Never signal a state by color alone** — pair it with icon, text, weight, or shape.
-- **Map the full set of states** (and what each leads to) for complex flows, so edge cases — failed
-  payment, stalled upload, unavailable action — surface before build, not in production.
-- **Nail the bedrock before breadth.** Identify the few tasks people repeat constantly and make
-  those fast and dependable before adding features; an opinionated, intentionally narrow surface
-  beats a broad, shallow one.
-- **Reveal complexity progressively.** Surface the next relevant option as the user advances rather
-  than presenting everything at once; emphasis should track priority.
+- **Map the full state set.** *(signifiers, models)* Core always: default, hover, active, focus,
+  disabled; functional where relevant: loading, success, error, selected; role, style, and state
+  are independent dimensions. Map where each state leads, so edge cases surface before build.
+- **Affordance and focus are visible.** *(signifiers)* Controls look interactive by *default*,
+  not just on hover; focus gets a visible indicator, never removed without a replacement (floor).
+- **Disabled needs a reason.** *(signifiers)* Pair a disabled control with what would unblock
+  it — otherwise users just click a dead button.
+- **Loading never blocks; errors carry the flow.** *(timing, attention)* Show something
+  immediately, load in the background, disable during loading (no duplicate submits); errors say
+  what failed and offer retry. Progress is honest — determinate when known, indeterminate only
+  when not, none for near-instant; glanceable surfaces say "you'll be notified", not a spinner.
+  Boot placeholders match the real first screen; gate expensive content behind explicit action.
+  User-initiated tasks finish unattended in the background, never pinging every completion.
+- **Never signal state by color alone** *(recognition)* — pair with icon, text, or shape (floor).
+- **Prevent input errors instead of correcting them.** *(motor, choice, memory)* Prefer selection
+  over free typing (pickers constrain to valid values and beat a keyboard); auto-format fields so
+  invalid input can't exist; derive what the system knows; accept paste and drag; validate in
+  place as people enter, not after submission. Show required-ness through control state — submit
+  unavailable until required data is present; obscure secrets as typed, never prepopulate them.
+- **Nail the bedrock; reveal the rest progressively.** *(complexity, attention)* Make the few
+  constantly repeated tasks fast and dependable before adding breadth; options surface as users
+  advance.
+
+## Principles — agency & forgiveness
+
+People came to get something done; the interface helps, then gets out of the way.
+
+- **Stay out of the way — never lock people into flows.** *(agency-trust, interruption)* Get
+  people directly to the task — chrome, ceremony, and interstitials that delay it need a reason;
+  no forced sequences or modes; guided flows (onboarding, wizards) stay easy to skip or escape.
+- **Make immersion opt-in and escape obvious.** *(agency-trust)* Launch into the normal/windowed
+  context; fullscreen, immersive, or focused modes are the user's explicit choice via a clear
+  control, with a prominent in-experience exit — needing OS gestures or hardware buttons to
+  escape means a trapped experience. Keep essential controls reachable inside, retain the
+  platform's standard exit gesture, never resize the user's window or change display settings —
+  the person, not the product, decides when immersion begins and ends (floor).
+- **Build forgiveness in.** *(agency-trust)* Consequential actions are reversible — undo/redo,
+  drafts, restore — so exploring is safe and recovery is cheap. Prefer undo to confirmation for
+  routine actions (prompts get dismissed by reflex); confirming the truly irreversible is a floor,
+  and the confirmation restates *every* consequential parameter — what, how much, where/to whom —
+  not just the headline item.
+- **Use modality deliberately — never stack or branch it.** *(interruption, models)* A modal
+  surface (dialog, sheet, voice confirmation turn) suspends its parent and demands explicit
+  dismissal: reserve it for focused tasks and critical decisions, full-screen takeovers for
+  genuinely immersive multistep work. Never a modal on a modal; a modal is a corridor, not an
+  app-within-an-app, its flow linear and single-purpose. If dismissal could discard work,
+  intercept it — gesture or button — and offer to save or discard.
+- **Make undo deep, visible, and grouped.** *(models, memory)* Undo reaches back to a logical
+  checkpoint (the last save), never an arbitrary depth cap; show each undo/redo's result,
+  scrolling to it if off-screen, so people never conclude it failed and repeat it; group related
+  micro-edits into one unit; an accident-prone trigger (a shake) confirms what will be undone.
+
+## Principles — feedback & the interruption budget
+
+Interruption spends a finite attention-and-trust budget — judged on the aggregate, not per alert.
+
+- **Match the interruption to the stakes.** *(interruption, attention)* Consultable status lives
+  on passive, glanceable surfaces; interruptive alerts are for critical, actionable information —
+  overuse trains dismissal, eroding the critical. An explicit urgency scale, not the sender's
+  wishes, decides what breaks through quiet settings; deferral never delays the content itself.
+- **Warn for the unexpected, not the intended.** *(interruption, models)* Warn before unexpected
+  irreversible loss, not loss that's the point (routine moves to trash); confirm success only for
+  high-stakes outcomes — people assume their actions succeed and need to hear when they fail.
+- **Let people dismiss; don't dismiss for them.** *(timing, agency-trust)* UI that vanishes on a
+  timer fails slow readers and assistive-tech users — wait for dismissal or persist recoverably.
+- **Solicit feedback at natural breaks.** *(interruption)* Rating prompts wait for a stopping
+  point, dismiss in one action, respect opt-out, never repeat-pester — repetition lowers opinion.
 
 ## Principles — motion
 
-Motion serves function, stays subtle, and respects attention.
+Motion serves function and respects attention; motion volume is a budget judged on the aggregate.
 
-- **Purposeful, not decorative.** Motion should orient (where did this come from / go?), give
-  feedback, or direct attention — not entertain. The best interface motion may go unnoticed.
-- **Fast for routine, expressive for rare.** Keep everyday micro-interactions quick; reserve
-  vibrant or celebratory motion for occasional important moments.
-- **Consistent and predictable.** The same kind of change animates the same way everywhere; use a
-  small set of easing and duration tokens rather than bespoke curves.
-- **Treat motion as a consistent personality, not one-off effects.** Easing and timing carry tone,
-  so derive a small shared set of curves and reuse it; keep transitions spatially continuous (a
-  panel animates from its real origin), and periodically audit and cut purposeless motion.
-- **Motion can improve usability — reach for it when it helps, not by default (opportunity).**
-  Continuity / shared-element transitions — a tapped card expanding to fill the screen, a thumbnail
-  opening to its detail, a row morphing into an editor — animate the *same object* from its origin so
-  the user keeps their bearings across a context change, preserving object permanence and answering
-  "where did this come from / go?". Most screens don't need this and its **absence is never a
-  defect**; when you do use it, keep it fast and give a reduced-motion fallback (instant cross-fade
-  or cut) so the function survives without the animation.
-- **Remove motion that's noticed too often.** If users consciously notice an animation repeatedly,
-  shorten or cut it.
-- **Always honor Reduce Motion.** Provide a non-animated path; never gate function behind motion.
-- **Immediate feedback.** Every interactive element acknowledges input (pressed/hover/focus/loading
-  states) within a perceptual instant.
+- **Purposeful, not decorative.** *(attention)* Motion orients, gives feedback, or directs
+  attention; the best motion goes unnoticed — if users notice one repeatedly, shorten or cut it.
+- **Immediate and fast.** *(timing)* Acknowledge every input within a perceptual instant; keep
+  routine micro-interactions quick, reserving expressive motion for rare important moments.
+- **One motion personality.** *(fluency, learning)* Easing and timing carry tone — derive a small
+  shared set of curves and duration tokens; the same kind of change animates the same way
+  everywhere; keep transitions spatially continuous (a panel animates from its real origin).
+- **Continuity / shared-element transitions (elective move).** *(models, attention)* Animating
+  the *same object* from its origin (a card expanding to its detail) preserves bearings across a
+  context change; absence is never a defect — used, it stays fast with a reduced-motion fallback.
+- **Always honor Reduce Motion.** *(agency-trust)* Never gate function behind motion (floor).
+  Reduction is substitution, not removal: fades for translations and zooms, tighter springs,
+  remaining motion tied to the gesture, no animated blurs or depth — and nothing moving or
+  flashing autoplays without an opt-out and a discoverable stop.
+- **Motion follows the gesture — never holds people hostage.** *(models, motor)* Dismissal
+  mirrors the invoke spatially (in from the top → away upward); direct manipulation tracks the
+  gesture, not played back at the user; every animation stays cancellable and skippable.
 
-## Review — what to look for
+## Checks beyond the principles
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
+*Weight per [SKILL.md → operating loop](../SKILL.md): floors and budget overdrafts are defects regardless of intent; dials are fit-to-thesis; an elective move's absence is never a finding.*
 
-- Are the core states present for every interactive element (default/hover/active/focus/disabled)?
-- Are functional states handled where needed (loading/success/error/selected)?
-- Is affordance clear in the *default* state, not hidden until hover?
-- Is there a visible focus indicator, never removed without a replacement?
-- Do disabled controls explain what would unblock them?
-- Does loading disable to prevent duplicates, and do errors explain + offer retry?
-- Is any state signalled by color alone?
-- Are the bedrock tasks fast and dependable; is complexity revealed progressively?
-- Is motion purposeful and fast for routine actions, using a small shared set of easing tokens?
-- Where a tap changes context, *would* a continuity / shared-element transition help — and if one is used, is it fast with a reduced-motion fallback? (Opportunity — its absence is fine.)
-- Is Reduce Motion honored, and does feedback arrive within a perceptual instant?
+- State-walk one bedrock task end-to-end through all its states; every state must lead somewhere.
+- Count the interruptions a first session produces (alerts, modals, prompts); cite worst spenders.
+- Verify a Reduce Motion path exists for every animation (substitution, not removal).
 
 ## Values
 

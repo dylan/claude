@@ -3,218 +3,184 @@ name: interface-design-expert
 description: Modern, general-purpose UI/UX design expertise for any kind of interface — web, native desktop (macOS, Windows, Linux), mobile, games, terminal/TUI, voice, and emerging surfaces. Use it to DESIGN new interfaces and to REVIEW/critique existing ones (a screenshot, a described concept, or live code) across multiple design dimensions at once — layout, typography, color & theming, accessibility, interaction & motion, content & voice, navigation & information architecture, consistency, and aesthetics & visual composition — grounded in cognitive & perceptual foundations. Self-contained and built to hand off to a review agent (one lens per agent, in parallel). Reach for it to review/critique an interface, design a UI or design system, choose design principles/tokens, or reason about UX from first principles. Prefer the platform skills (ios/ipados/macos/web-design-guidelines) when the work targets exactly one of those platforms.
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: "2.0.0"
 ---
 
 # Interface Design Expert
 
-A multi-lens instrument for **designing** and **reviewing** interfaces of any kind — web, native
-desktop, mobile, games, terminal/TUI, voice, spatial. It surveys a **screenshot**, a **described
-concept**, or **live code** across nine independent design dimensions, each backed by a
-self-contained lens file, all resting on shared **cognitive & perceptual foundations**. Run as many
-lenses as the task needs — one for a focused question, all of them for a full review — sequentially
-or fanned out to agents (one lens each).
+A first-principles instrument for **designing** and **reviewing** interfaces in any medium — web,
+desktop, mobile, games, terminal/TUI, voice, spatial, and surfaces nobody has documented yet.
+Human perception and cognition don't change with the substrate; only the expression and the values
+do. Everything here runs on that split: **principles are universal; values are resolved per
+medium; novel problems are derived from the invariants** in
+[`rules/foundations.md`](rules/foundations.md), never pattern-matched from another platform.
 
-The principles are universal; the **numbers are not** (see the value-resolution rule below).
+## The operating loop
 
-## How this skill relates to the platform skills
+Run this for every engagement, both modes:
 
-This is the **cross-platform foundation**. When you know the target platform, also consult the
-specific skill — `ios-design-guidelines`, `ipados-design-guidelines`, `macos-design-guidelines`, or
-`web-design-guidelines` — for concrete components and code. For every other surface — **Windows,
-Linux, games, terminal/TUI, voice, spatial/XR, or anything cross-platform** — this skill is the
-primary reference. Use it when the work is platform-agnostic, spans multiple platforms, concerns a
-design system, or no platform skill covers the target.
+1. **Establish context and thesis.** The artifact (screenshot / concept / code), the medium and
+   platform, the users and their goal. Then name the design's **thesis**: the one or two
+   dimensions it must maximize, and which dials it relaxes to get there. If the thesis isn't
+   stated, infer it and say what you assumed. *Genericism check: if the thesis would fit any
+   product in the category, it isn't doing work — sharpen it until it forces at least one visible
+   design choice.*
+2. **Resolve every number.** Never emit a quantitative value from memory. Resolution order:
+   (1) user/project override → (2) documented platform/medium default → (3) the stricter,
+   most-inclusive fallback, named as such. Concrete values live only in
+   [`rules/platform-values.md`](rules/platform-values.md). The rule covers **every number in the
+   deliverable, including the tail** — line-heights, focus-ring widths, timeouts, panel widths,
+   thresholds — not just the headline values. Where no documented source exists, declare the
+   choice inline — `(chosen: <one-line rationale>)` — an explicit declaration is provenance;
+   silence is not.
+3. **Judge each consideration by its kind** — four kinds, four procedures:
+   - **Floors** (pass/fail; a breach is a defect regardless of intent): legibility; sufficient
+     contrast; meaning never by color alone; function never gated behind motion; system/user
+     settings honored; user agency over interruption and immersion (the person — not the product —
+     decides when interruptions, full-screen, and immersive modes begin and end); visible focus and
+     keyboard operability; data integrity; truthful feedback; honest patterns (transparent about
+     what the product does and collects — never deceptive); cheap recovery from mistakes (undo
+     where feasible; confirm what can't be undone); a responsiveness floor; and any domain-specific
+     safety constraint. Adapt a floor's *expression* per medium; never remove it.
+   - **Budgets** (finite aggregates; overdraft is a defect even when each instance fits the
+     intent): attention/emphasis, interruption & trust, novelty, motion, performance weight.
+     Ceilings derive from the finite-attention and finite-trust invariants and are
+     intent-independent — the thesis tunes only the *allocation*. Judge on the whole: a screen can
+     pass every per-element check and still be overdrawn. Cite the worst spenders.
+   - **Dials** (tuned to the thesis; misfit, not breach): density ↔ whitespace; guidance ↔
+     minimalism; motion restraint ↔ expressiveness; ornament ↔ restraint; convention ↔ novelty;
+     breadth ↔ depth; consistency ↔ bespoke moments; coexistence ↔ immersion. A relaxed dial in
+     service of the thesis is craft; relaxed by accident, a defect. Record which ideal was
+     relaxed, for which goal.
+   - **Elective moves** (tools, not requirements): continuity transitions, delight moments,
+     dynamic theming, coachmarks, deep progressive disclosure. Judge *"would this help here, and
+     is it well-executed if used?"* — **absence is never a finding.**
+4. **Work the lenses** — generatively (build order below) or evaluatively (survey below). For
+   anything novel or ambiguous, derive from [`rules/foundations.md`](rules/foundations.md) first:
+   constraint → requirement → candidates (conventional *and* invented) → predict → test.
+5. **Deliver the contract** (output formats below), flagging what static work can't confirm —
+   motion feel, live-theme contrast — as "needs runtime check." The deliverable speaks the
+   client's domain language: never reference this skill's internal machinery ("lenses", "dials",
+   "budgets", "the value-resolution rule") inside the artifact — state each rationale in the
+   domain's own terms.
 
-## Works on any interface
+## Media: dominant lenses and adaptation
 
-The nine dimensions and the foundations are **substrate-agnostic** — they describe human perception
-and cognition, which don't change with the medium. What changes per interface type is the
-*expression*: the input model, the available affordances, and the concrete values. Establish the
-**interface type** alongside the platform, then adapt the expression while keeping the principles.
+The lenses are substrate-agnostic; what changes per medium is the input model, the dominant
+lenses, and the values (resolve per the rule above; surface-specific values and constraints live
+in [`platform-values.md → Surfaces beyond the defaults`](rules/platform-values.md#surfaces-beyond-the-defaults)).
 
-| Interface | Input model | Adapt especially |
+| Interface | Input model | Dominant lenses |
 |---|---|---|
-| Web | pointer + touch + keyboard | responsive/fluid layout; WCAG; progressive enhancement |
-| Native desktop (macOS / Windows / Linux) | pointer + keyboard | platform window/menu/shortcut conventions; higher density; pointer precision |
-| Mobile / tablet | touch (+ pointer) | reach/thumb zones; larger targets; system light/dark & text scaling |
-| Games | gamepad / KBM / touch | focus-based nav (no cursor); diegetic vs HUD; readable at distance (10-foot/TV); latency & frame budget; **build your own accessibility**; safe-area/overscan |
-| Terminal / TUI | keyboard-first | monospace **character grid** (cells, not pixels); limited color palette; focus via highlight; no images; usable over low-bandwidth SSH |
-| Voice / conversational | speech / text | linear and unscannable — keep choices few and recall-light; confirm destructive actions; short turns |
-| Spatial / XR | gaze + gesture / controller | depth & comfort; large targets; minimal head movement; legibility against the real world |
+| Web | pointer + touch + keyboard | layout · accessibility · navigation/IA |
+| Native desktop | pointer + keyboard | interaction · consistency (platform conventions) · layout |
+| Mobile / tablet | touch (+ pointer) | layout (reach) · interaction · accessibility |
+| Games | gamepad / KBM / touch | interaction (latency, focus-nav) · aesthetics · accessibility (build it yourself) |
+| Terminal / TUI | keyboard-first | layout (cell grid) · interaction · color (palette limits) |
+| Voice / conversational | speech (+ keypad) | content/voice · interaction · navigation/IA |
+| Spatial / XR | gaze + gesture | interaction (comfort floors) · layout (depth) · accessibility |
+| Wearable / TV / novel | varies | derive from foundations; resolve values per the rule |
 
-For surfaces with no platform skill, resolve numbers per the rule below — falling back to the
-most-inclusive/most-accessible value when a surface has no documented one. See
-[platform-values.md → Surfaces beyond the defaults](rules/platform-values.md#surfaces-beyond-the-defaults).
-The lens files use generic terms ("screen", "control", "view") — read them against your target medium.
+When you know the target is exactly iOS, iPadOS, macOS, or the web platform, also consult that
+platform skill (`ios-design-guidelines`, `ipados-design-guidelines`, `macos-design-guidelines`,
+`web-design-guidelines`) for concrete components; this skill is the primary reference for
+everything else and for cross-platform work.
 
-## Core rule: principles are universal, values are resolved
+## Designing (build order)
 
-Every quantitative spec (touch-target size, text minimum, motion duration, grid unit) is a
-**parameter, not a constant**. Never emit a hard number from memory. Resolve it in this order:
+**Default posture: boring by default, novel on purpose.** Absent a thesis reason, take the
+established convention — spend the novelty budget only where the thesis demands a visible
+difference. Each step names its governing lens and produces an artifact the next step consumes:
 
-1. **User-specified** — if the user or project pins a value ("min target 40pt", "base type 16px"), it wins.
-2. **Platform default** — if the target platform is known, use its documented value.
-3. **Most-inclusive fallback** — if neither is given, pick the *stricter / most accessible* value
-   (e.g. 48dp ⊇ 44pt) so output is safe everywhere, and say so.
+1. **Thesis & dial settings** → one paragraph: intent, maximized dimensions, relaxed dials, the
+   emotion the product should evoke *(foundations, aesthetics)*.
+2. **Conceptual model & objects** → the user-facing objects, their relationships, and the actions
+   on them — match models users already hold *(foundations)*.
+3. **Structure** → organization, labels, navigation, search; entry architecture (what gates the
+   first session) *(navigation-ia)*.
+4. **Layout system** → grid/spacing unit, hierarchy per screen, responsive/adaptive behavior
+   *(layout)*.
+5. **Interaction model & bedrock states** → the few bedrock tasks, each with a full state map
+   (default/hover/focus/disabled/loading/error/empty); input methods; forgiveness (undo/confirm)
+   *(interaction)*.
+6. **Tokens** → type scale, semantic color (light+dark), spacing, motion — every value resolved
+   with provenance *(typography, color-theming, platform-values)*.
+7. **Copy** → labels, prompts, errors in the product's voice; transparency at every ask
+   *(content-voice)*.
+8. **Composition pass** → squint test per key screen: one focal point, decisive contrast, coherent
+   whole; spend the emphasis budget deliberately *(aesthetics)*.
 
-Always establish **"what platform?"** before committing to numbers. All concrete values live in
-[`rules/platform-values.md`](rules/platform-values.md) — link there rather than inlining numbers.
+**Self-check before delivering (cheap, not a full review):** floors — all of them, against the
+list above; budgets — any aggregate overdrawn?; squint test on the primary screen; state-walk one
+bedrock task end to end; and **sweep the finished artifact for bare numbers** — every numeral,
+down to line-heights, widths, breakpoints, and timeouts, carries a source or a `(chosen: …)` tag.
+The tail values are where this always fails. Then ship the spec as **structure + key screens/states + tokens +
+rationale** (which constraint each major decision serves). Treat it as a starting point: prototype
+early, discard what doesn't work — craft is ongoing, not a phase.
 
-**Verify at runtime, not just on paper.** Two things can't be confirmed by reading code or specs:
-**motion** (does it honor Reduce Motion? does it feel fast?) and **live-theme contrast** (does text
-actually pass in light *and* dark with increase-contrast on?). Flag these as "needs runtime check"
-rather than passing them silently.
+## Reviewing (survey)
 
-## Tradeoffs & intent
-
-Good design is not "satisfy all nine dimensions equally" — it's making the **right** dimensions win
-for the product's goal without breaching a floor. The nine dimensions conflict by design (denser
-layout vs. breathing room; guidance vs. minimalism; expressive motion vs. restraint; ornament vs.
-restraint; novelty vs. convention), so judge them **weighted by intent**, not as a flat checklist.
-
-- **Lead with intent.** Before anything, name the design's *thesis* and the **one or two dimensions
-  it must maximize**. Everything else is in service of that. A dense expert tool maximizes
-  efficiency/information density and minimizes hand-holding; an onboarding flow inverts it; a game
-  maximizes immersion and *expressive* motion (the opposite of "motion goes unnoticed"); a
-  safety-critical console maximizes error-prevention and accepts slower flows.
-
-- **Floors vs. dials.** Distinguish what you may *tune* from what you may not *trade away*:
-  - **Floors (non-negotiable — adapt the expression per medium, never remove):** legibility;
-    not encoding meaning by color alone; sufficient contrast; never gating function behind motion;
-    honoring system/user settings; visible focus / keyboard operability; data integrity; truthful
-    feedback; a performance/responsiveness budget; and any domain-specific safety constraint (e.g.
-    confirming destructive actions, input latency in a game).
-  - **Dials (tune to intent):** information density ↔ whitespace; guidance ↔ minimalism; motion
-    restraint ↔ expressiveness; ornament ↔ restraint; convention ↔ novelty; breadth ↔ depth;
-    consistency ↔ bespoke moments. Most legitimate "compromises" are dial settings, not floor breaches.
-  - **Opportunities (tools, not requirements):** techniques you reach for *when they'd help* —
-    continuity / shared-element transitions, expressive delight moments, dynamic theming, coachmarks,
-    deeper progressive disclosure. **Absence is never a defect.** Judge them *"would this help here,
-    and is it well-executed if used?"* — never *"is it present?"* Most of the skill is opportunities
-    and dials applied with judgment; only floors are pass/fail.
-
-- **A deviation is only as good as its reason.** Relaxing a dial to serve the intent is craft;
-  relaxing it by accident is a defect. Record which ideal was relaxed, for which goal — turn a
-  silent compromise into a reviewable decision.
-
-- **Beauty is a dial — and a special case.** Aesthetics intensifies with intent (and earns real
-  trust and tolerance — see foundations), but it **never lowers a floor**, and it can *mask* defects:
-  judge appeal *separately from and after* usability, and evidence beauty claims rather than
-  asserting them. See the [Aesthetics lens](rules/aesthetics.md).
-
-This reframes both modes: a **review** asks "do the right dimensions win for the stated intent, and
-is any floor breached?" — not "is every box ticked." A **design** chooses which dials to push *before*
-satisfying the rest.
-
-## How to run a multi-dimensional survey
-
-1. **Establish context and intent.** What's the artifact — a screenshot, a concept, or code? What
-   platform and who are the users / what's the goal? Name the design's *thesis* and the dimension(s)
-   it must maximize (see **Tradeoffs & intent**) — this **reweights the lenses** and drives
-   value-resolution. If the intent isn't stated, infer it and say what you assumed.
-2. **For a novel or ambiguous problem, derive first.** Before reaching for conventions, load
-   [`rules/foundations.md`](rules/foundations.md) and work the generative loop (name the human
-   constraint → state the requirement → enumerate *and invent* candidates → predict against the
-   constraints → prototype & test).
-3. **Select dimensions.** Default to **all nine** for a full review; pick a subset for a focused
-   question. Each dimension is an independent lens — load its file (below) and apply its
-   *Review — what to look for* checklist.
-4. **Apply the lenses.** Sequentially for a quick pass. For a thorough review, run them **in
-   parallel — one subagent per dimension** — since the lenses are independent; then merge results.
-   Always include the foundations lens as the cross-cutting "why".
-5. **Synthesize, weighted by intent.** Produce findings in the output format below. Separate
-   **floor breaches** (defects — call them out regardless of intent) from **dial settings** (judge
-   as *fits / doesn't fit* the stated intent, not as universal faults); treat **opportunities** as
-   optional (a missing one is *not* a finding — at most a suggestion, "this could help"), and record
-   genuine **tensions** where serving the goal meant relaxing an ideal. Resolve every number via the
-   value-resolution rule, and flag motion / live-theme-contrast items as "needs runtime check".
-
-## Designing a new interface
-
-Same lenses, run generatively instead of evaluatively:
-
-1. **Frame it and commit to a thesis.** Fix the interface type and platform, the users, and the
-   *few core tasks* (the bedrock) the design must nail — then name the **one or two dimensions to
-   maximize** and which dials you'll relax to serve them (see **Tradeoffs & intent**). Decide the
-   tradeoffs on purpose, up front.
-2. **Derive, don't copy.** Take the structure and key interactions from
-   [`rules/foundations.md`](rules/foundations.md) (constraint → requirement → enumerate *and invent*
-   candidates → predict), especially for anything novel.
-3. **Satisfy each dimension.** Walk the lenses, applying their principles; choose tokens and values
-   via the value-resolution rule, adapted to the interface type.
-4. **State the model and the rationale.** Give the conceptual model and note which constraint each
-   major decision serves, so the design can be reviewed and evolved rather than just admired.
-
-Output a brief **spec + rationale** (structure, key screens/states, tokens, and the why) rather than
-findings.
-
-## Dimensions (lenses)
-
-| # | Dimension | Lens file | Survey it for |
-|---|---|---|---|
-| — | Cognitive & perceptual foundations | [`rules/foundations.md`](rules/foundations.md) | the *why*; deriving novel solutions |
-| 1 | Layout & visual hierarchy | [`rules/layout.md`](rules/layout.md) | what the eye hits first; scanability; responsiveness |
-| 2 | Typography | [`rules/typography.md`](rules/typography.md) | type scale; legibility; measure; hierarchy |
-| 3 | Color & theming | [`rules/color-theming.md`](rules/color-theming.md) | semantic color; dark mode; contrast |
-| 4 | Accessibility | [`rules/accessibility.md`](rules/accessibility.md) | targets; contrast; semantics; AT; settings |
-| 5 | Interaction, states & motion | [`rules/interaction.md`](rules/interaction.md) | state coverage; affordance; feedback; motion |
-| 6 | Content & voice | [`rules/content-voice.md`](rules/content-voice.md) | clarity; voice/tone; labels; structure |
-| 7 | Navigation & IA | [`rules/navigation-ia.md`](rules/navigation-ia.md) | structure; wayfinding; findability |
-| 8 | Consistency | [`rules/consistency.md`](rules/consistency.md) | tokens; cohesion; conventions |
-| 9 | Aesthetics & visual composition | [`rules/aesthetics.md`](rules/aesthetics.md) | focal point; balance; rhythm; polish; emotional tone *(dial)* |
-
-Concrete numbers for every dimension live in [`rules/platform-values.md`](rules/platform-values.md).
-
-## Output format
+1. Run the operating loop (context, thesis, value resolution).
+2. **Select lenses.** All nine + foundations for a full review; the medium's dominant lenses for a
+   quick pass; one lens for a focused question. Fan out one agent per lens for thorough work
+   (briefing below).
+3. **Calibrate severity:** floor breach → `blocker`/`high` · budget overdraft → `high` (judged on
+   the aggregate; cite the worst spenders) · dial misfit → `medium` (fit-to-thesis, argued) ·
+   polish → `low` · elective-move absence → not a finding (at most a suggestion).
+4. **Synthesize weighted by the thesis** — do the right dimensions win, and is any floor breached
+   or budget overdrawn?
 
 ```
 ## <Artifact> — design survey
-**Context:** <platform · users/goal · artifact type>
-**Intent:** <the design's thesis and the dimension(s) it must maximize — stated or inferred>
+**Context:** <medium · platform · users/goal · artifact type>
+**Intent:** <thesis and maximized dimension(s) — stated or inferred>
 **Summary:** <2–3 sentences: overall read and the most important takeaways>
 
 ### Findings
-- **[<Dimension> · <severity: blocker/high/medium/low>]** <Principle> — <the issue, concretely> — Fix: <what to do>
-  (...one per finding, grouped or sorted by severity; floor breaches are defects regardless of intent...)
+- **[<Dimension> · <blocker/high/medium/low>]** <Principle> — <the issue, concretely, located> — Fix: <what to do>
 
 ### Tensions & tradeoffs
-- <where serving the intent meant relaxing an ideal: what was relaxed, for which goal — and whether the call is sound>
+- <ideal relaxed, for which goal — and whether the call is sound>
 
 ### Needs runtime check
-- <motion / live-theme-contrast items that static review can't confirm>
+- <motion / live-theme items static review can't confirm>
 
 ### Strengths
-- <what's already working, so it's preserved>
+- <what's working, so it survives the fixes>
 ```
 
-For each finding, name the **principle**, the **issue**, and the **fix**; resolve any number via the
-value-resolution rule.
+## Dimensions (lenses)
+
+| # | Dimension | Lens file | Owns |
+|---|---|---|---|
+| — | Cognitive & perceptual foundations | [`rules/foundations.md`](rules/foundations.md) | the invariants; deriving the novel |
+| 1 | Layout & visual hierarchy | [`rules/layout.md`](rules/layout.md) | the eye's first stop; grids; adaptation |
+| 2 | Typography | [`rules/typography.md`](rules/typography.md) | type system; legibility; measure |
+| 3 | Color & theming | [`rules/color-theming.md`](rules/color-theming.md) | semantic color; modes; contrast |
+| 4 | Accessibility | [`rules/accessibility.md`](rules/accessibility.md) | floors made concrete; AT; settings |
+| 5 | Interaction, states & motion | [`rules/interaction.md`](rules/interaction.md) | states; agency; feedback; motion |
+| 6 | Content & voice | [`rules/content-voice.md`](rules/content-voice.md) | words; tone; transparency |
+| 7 | Navigation & IA | [`rules/navigation-ia.md`](rules/navigation-ia.md) | structure; wayfinding; entry |
+| 8 | Consistency | [`rules/consistency.md`](rules/consistency.md) | tokens; conventions; cohesion |
+| 9 | Aesthetics & visual composition | [`rules/aesthetics.md`](rules/aesthetics.md) | the assembled whole; emphasis budget; emotion |
+
+Numbers for every dimension: [`rules/platform-values.md`](rules/platform-values.md).
 
 ## Handing off to a review agent
 
-Each lens is independent and self-contained, so a review fans out cleanly. To delegate:
-
-- Give the agent the **artifact** (screenshot / concept / code) and the **context** (interface type,
-  platform, users/goal).
-- For a focused review, name the lenses; for a full review, run **one agent per lens in parallel**,
-  then merge their findings and de-duplicate.
-- Require the output format above.
-
-Briefing template (fill the `< >` and paste):
+Each lens file is self-contained. Per agent:
 
 ```
-Review <artifact> using the interface-design-expert skill.
-Context: interface type=<web|desktop|mobile|game|TUI|voice|…>, platform=<…>, users/goal=<…>.
-Intent: <the design's thesis and the dimension(s) it must maximize>. Weight your lens against this:
-flag floor breaches (accessibility, contrast, color-only meaning, focus, safety) as defects
-regardless of intent, but judge dial settings (density, minimalism, motion, novelty) as fit/misfit
-to the intent — not as universal faults.
-Lenses: <all nine | named subset>. For each, read its file in interface-design-expert/rules/ and apply the
-"Review — what to look for" checklist; consult foundations.md for the "why" and platform-values.md
-for numbers (resolve per the value-resolution rule — never invent a number).
-Return: the skill's output format — [Dimension · severity] principle — issue — fix, a "Tensions &
-tradeoffs" note, plus "Needs runtime check" and "Strengths". Cite the element/location of each finding.
+Review <artifact> with the interface-design-expert skill.
+Context: medium=<…>, platform=<…>, users/goal=<…>. Intent: <thesis>.
+Lens: <one lens>. Read its file in interface-design-expert/rules/, apply its principles as checks,
+plus its "Checks beyond the principles". Consult foundations.md for the why; resolve every number
+via platform-values.md (never invent one).
+Judge by kind: floors and budget overdrafts are defects regardless of intent (severity: floors →
+blocker/high, budgets → high on the aggregate); dials are fit-to-thesis (medium); absence of an
+elective technique is never a finding.
+Return the survey format: [Dimension · severity] principle — issue (located) — fix, plus Tensions,
+Needs runtime check, Strengths.
 ```
 
-For a parallel sweep, give each agent **one** lens (`Lenses: Accessibility`, etc.) and merge.
+Merge agent results, de-duplicate, and re-rank severities against the calibration above.

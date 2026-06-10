@@ -6,47 +6,54 @@ rule in [`../SKILL.md`](../SKILL.md) and [`platform-values.md`](platform-values.
 
 ## Principles
 
-- **Prioritize essential content.** Give the most important information space and prominence;
-  don't obscure it by crowding it with nonessential detail.
-- **Follow natural reading order.** Place primary content and actions near the top and leading edge
-  to exploit how people scan (top→bottom, leading→trailing).
-- **Align deliberately.** Alignment communicates organization and hierarchy and makes a screen
-  easier to scan; align leading elements (icons, avatars, thumbnails) to a shared edge.
-- **Group with proximity and rhythm.** Related items belong close together; consistent spacing
-  between groups creates scannable rhythm. Use containers or dividers only when proximity isn't enough.
-- **Adapt responsively.** A layout must work and stay *recognizably consistent* across orientation,
-  window resize, extra displays, and different devices.
-- **Design from the content out.** Anchor the layout to a constant in the content (ideal line
-  length, a key module's proportions) and place breakpoints where relationships actually break —
-  not at device-class widths. Devices change faster than you can enumerate them.
-- **Make components respond to their own container and content,** not the screen, so a module works
-  dropped into a main column, a sidebar, or a card grid without rework.
-- **Prefer relative/intrinsic units over fixed pixels for structure,** bounded by min/max so an
-  element flexes but never becomes unusable (e.g. 50% of container, never under 300 nor over 600).
-- **Design for input mode and grip, not just screen size.** Place primary actions within
+- **Prioritize essential content, in reading order.** *(attention)* the most important thing gets
+  space and prominence, top and leading where the scan starts, not crowded by nonessential detail.
+- **Treat reading direction as a layout parameter.** *(convention)* Build with leading/trailing,
+  not left/right. Where spatial order carries meaning (chronology, rank, steps), reverse it when
+  mirrored — but digit order *within* numbers (phones, prices, IDs) never reverses; keep one
+  alignment for every item in a list, even mixed-script items, so the scan line holds.
+- **Align deliberately.** *(grouping, fluency)* shared edges signal organization and speed
+  scanning; align leading elements (icons, avatars, thumbnails) to one edge.
+- **Group with proximity and rhythm.** *(grouping)* related items sit close; consistent spacing
+  between groups creates rhythm; containers or dividers only when proximity isn't enough.
+- **Let content own the canvas; float chrome above it.** *(signifiers, attention)* Extend content
+  to the display/window edges; layer controls *over* it rather than carving opaque slabs beside
+  it — layering signals control vs. content; a forward element (a sheet over its dimmed backdrop)
+  reads as prominent. Chrome may hide for focal content if an easy, familiar gesture restores it.
+- **Respect safe areas; keep essentials in the safe zone.** *(convention)* Honor platform safe
+  areas and guides — no collisions with hardware cutouts, system chrome, or overscan. Where a
+  container may crop, scale, or animate its contents (hover/focus, TV edges, masked icons), keep
+  essentials centered away from the edges; on aspect-ratio change, scale and crop, never stretch.
+- **Design from the content out.** *(fluency)* Anchor layout to a constant in the content (ideal
+  line length, a key module's proportions); breakpoints go where relationships break, not at
+  device-class widths — devices change faster than you can enumerate them. Components respond to
+  their container and content, not the screen; structure uses relative units with min/max bounds.
+- **Collapse late; grow by proportion.** *(memory, recognition)* Stay recognizable across sizes:
+  design the full-size layout first and keep it while it fits — shed tertiary panes first when
+  narrowing; when growing, change proportions, not which elements appear. Assume arbitrary user
+  tilings; keep critical controls off a movable window's bottom edge — it often sits off-screen.
+- **Design for input mode and grip, not just screen size.** *(motor)* place primary actions within
   comfortable one-handed reach, enlarge anything in hard-to-reach corners, and adapt target size,
   contrast, and asset weight to finger-vs-pointer and ambient conditions.
-- **Treat performance and resilience as design constraints** — a layout that doesn't load is a
-  failed design. Build a usable baseline that works without styling/scripts, then layer
-  enhancements on top.
+- **Let text scaling reshape the layout.** *(fluency)* When users scale text up, adapt the whole
+  layout, not just the type: enlarge meaningful icons alongside text, switch crowded inline
+  arrangements to stacked ones, reduce column counts, keep hierarchy anchored near the top — as
+  much useful text at the largest sizes as at standard, not truncated.
+- **Treat performance and resilience as design constraints.** *(timing)* a layout that doesn't
+  load is a failed design — a floor. Usable baseline without styling/scripts first, then enhance.
 
-**Mechanism — Gestalt:** hierarchy is produced by proximity, similarity, common region, and
-continuity. When something "looks busy," check which Gestalt grouping is missing.
+**Mechanism — Gestalt:** hierarchy comes from proximity, similarity, common region, continuity.
 
-## Review — what to look for
+## Checks beyond the principles
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
+*Weight per [SKILL.md → operating loop](../SKILL.md): floors and budget overdrafts are defects regardless of intent; dials are fit-to-thesis; an elective move's absence is never a finding.*
 
-- Does the most important thing draw the eye first, or is it crowded by nonessential detail?
-- Do primary content and actions sit top/leading, following reading order?
-- Are elements aligned to shared edges — any arbitrary misalignment that hurts scanning?
-- Are related items grouped by proximity and consistent rhythm? Are containers/dividers used only where proximity isn't enough?
-- Does it adapt across sizes and stay recognizable? Are breakpoints at content-break points, not device classes?
-- Would each component still work dropped into a different container?
-- Is structure built on relative units with min/max bounds, or brittle fixed pixels?
-- Are primary actions in comfortable reach for the likely input mode/grip? Anything stranded in hard-to-reach corners?
-- Does a usable baseline survive without styling/scripts/heavy assets?
-- Where it "looks busy," which Gestalt grouping (proximity/similarity/common region/continuity) is missing?
+- Render mirrored (RTL locale or forced direction): semantic order reversed, digit order within
+  numbers preserved, one alignment per list with mixed scripts, no hard-coded left/right.
+- Resize through the tiled/snapped window sizes users actually choose: tertiary panes shed first,
+  growth changes proportions rather than the set of visible elements.
+- Load with styling, scripts, and heavy assets disabled: a usable baseline must survive.
+- Where a screen "looks busy," name which Gestalt grouping is missing — that names the fix.
 
 ## Values
 

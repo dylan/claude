@@ -31,9 +31,6 @@ Legend: **pt** = iOS/macOS points · **dp/sp** = Android density-independent pix
 | Default body | **17 pt** iOS · 13 pt macOS | ~14–16 sp | ~16 px |
 | Unit | pt | sp | rem (rem = px / 16) |
 
-- **Principle:** commit to one ratio (1.125 is a safe default), pick the few roles you need, keep
-  *impactful contrast* between adjacent sizes, never go below the platform minimum, and support
-  user text scaling (don't lock pixel sizes).
 - **Measure (line length):** aim for **~45–75 characters** per line for body text; re-tune measure
   and line-height together whenever the typeface or size changes.
 
@@ -62,13 +59,9 @@ Offer a higher-contrast variant where the platform exposes one.
 
 ### Dark mode
 
-- **Not an inversion.** Use dimmer backgrounds and brighter foregrounds; some colors flip, others
-  don't.
-- **Semantic colors auto-adapt.** Define light/dark pairs per role; never hard-code hex.
-- **Convey depth with surface tone**, not just shadows — a brighter "elevated" surface advances
-  foreground content (modals, popovers); a dimmer "base" surface recedes.
-- **Respect the system setting.** Don't ship an app-specific appearance toggle that fights it.
-- **Test** in both modes with increase-contrast and reduce-transparency enabled.
+Guidance lives in the [color-theming lens](color-theming.md); the operative values: every semantic
+token carries a light/dark pair, and both modes must pass the contrast table above — verify with
+increase-contrast and reduce-transparency enabled.
 
 ---
 
@@ -83,6 +76,7 @@ Offer a higher-contrast variant where the platform exposes one.
 | Color-only meaning | **prohibited** — always pair with text / icon / shape |
 | Motion | provide a **Reduce Motion** path (no function gated behind animation) |
 | Settings to honor | Reduce Motion, Increase Contrast, Reduce Transparency, larger / dynamic text |
+| Text enlargement | usable with text scaled to **200 %** (**140 %** on watch-sized screens) — via the platform's dynamic text mechanism or equivalent custom scaling |
 | Text spacing (user-adjustable, no loss) | line-height **≥ 1.5×** font size · paragraph **≥ 2×** · letter **≥ 0.12×** · word **≥ 0.16×** |
 | Link / control text | meaningful out of context (avoid repeated "Learn more"); names programmatically associated |
 
@@ -96,21 +90,18 @@ Offer a higher-contrast variant where the platform exposes one.
 | Standard transition (small/medium area) | **~200–300 ms** | standard / decelerate on entry, accelerate on exit |
 | Large or expressive transition | **~300–500 ms** (rarely >600 ms) | emphasized, e.g. `cubic-bezier(0.05, 0.7, 0.1, 1)` |
 
-- **Principle:** fast and subtle for routine, expressive reserved for rare important moments,
-  a small shared set of easing/duration tokens, and **always** a reduced-motion path.
 - **Response-time thresholds:** keep interactions within ~**1 s** to preserve the user's flow of
   thought; show working feedback once past ~1 s, and a progress indicator + cancel past ~**10 s**.
   Aim for near-immediate feedback on direct manipulation (treat "0.1 s = instant" as a soft target,
-  not a hard law).
+  not a hard law). Launch counts too: target ≤ ~**2 s** from start to the first usable screen, and
+  past a couple of seconds show an indicator (or partial content) rather than a blank screen.
 
 ---
 
 ## Component states
 
-Interactive elements need an explicit, consistent set of states across the system:
-
-- **Core (always):** default · hover · active/pressed · focus · disabled
-- **Functional (where relevant):** loading · success · error · selected/toggled
+State sets are defined in the [interaction lens](interaction.md) (core: default · hover ·
+active/pressed · focus · disabled; functional: loading · success · error · selected). The values:
 
 | Concern | Guidance |
 |---|---|
@@ -125,21 +116,21 @@ Interactive elements need an explicit, consistent set of states across the syste
 ## Spacing & grid
 
 - **Base unit:** an **8 px** grid is the common default, with **4 px** as a sub-step for fine
-  adjustments. Snap spacing to the unit.
-- **Group by proximity**, establish rhythm with consistent gaps, and use negative space for
-  emphasis.
-- **Adapt density to breakpoint** — tighter on small screens, more generous on large ones; keep
-  content within a readable max width.
+  adjustments. Snap spacing to the unit; keep body content within a readable max width (see
+  Measure, above).
 
 ---
 
 ## Elevation & depth
 
-- Convey depth and hierarchy with a **small set of elevation / layer tokens**, applied consistently.
-- Two valid approaches, often combined: **shadow-based** z-elevation, and **tonal / translucent
-  surfaces** (a brighter surface or a blurred material layer reads as "higher").
-- Prefer subtle, tonal depth cues over heavy shadows; keep components at their default elevation
-  and change it only in response to interaction (e.g. a slight lift on hover/drag).
+- A **small set of elevation / layer tokens**, applied consistently — shadow-based and/or tonal
+  (a brighter or blurred surface reads as "higher"); change elevation only in response to
+  interaction.
+- **Translucency needs a legibility budget:** when a highly transparent surface sits over bright
+  underlying content, back it with a dark dimming layer — Apple's figure is **35 % opacity** — so
+  foreground content keeps contrast; skip the scrim when what's underneath is already dark. And the
+  thinner/clearer the material, the fewer low-contrast text tiers it can carry — drop the faintest
+  label tier on the thinnest materials.
 
 ---
 
@@ -173,9 +164,6 @@ Assemble UIs from tokens and shared components rather than ad-hoc values.
 | Wayfinding | always show current location ("you are here"); interior pages are common entry points |
 | Research | findability → tree testing / card sorting; discoverability → click / usability testing |
 
-The four IA systems — **organization, labeling, navigation, search** — are structural and stay
-consistent across platforms; platform conventions govern only how they're presented.
-
 ---
 
 ## Surfaces beyond the defaults
@@ -191,15 +179,35 @@ most-inclusive/most-accessible value when nothing is documented:
   navigate by **focus** (a highlighted element, not a cursor), keep safe-area / overscan margins,
   and never depend on hover.
 - **Games:** input is gamepad / KBM / touch; navigation is focus-based; budget for **latency and
-  frame rate** (feedback within a frame or two); distinguish diegetic (in-world) UI from HUD; and
-  **build accessibility yourself** (remappable controls, subtitle sizing, colorblind-safe encodings)
-  rather than inheriting it from an OS.
+  frame rate** (feedback within a frame or two; a *consistent* **30–60 fps** reads as smooth — ship
+  per-device defaults so players don't have to tune settings first); distinguish diegetic (in-world)
+  UI from HUD; and **build accessibility yourself** (remappable controls, subtitle sizing,
+  colorblind-safe encodings) rather than inheriting it from an OS.
 - **Terminal / TUI:** the grid is **character cells**, not pixels — size and align to cells; the
   minimum target is a full row/cell with a clear focus highlight; color is limited (16 / 256 /
   truecolor, and the user may override the palette) so never rely on exact hues; there are no images,
   so carry state with text, symbols, and box-drawing; keep it usable over low-bandwidth SSH.
+- **Spatial / XR:** targeting is gaze + gesture, so space controls generously (see table below) and
+  never let interactive elements overlap; comfort is a floor — avoid sustained oscillating motion
+  (people are most sensitive around **0.2 Hz**; if you must oscillate, keep amplitude low and make
+  the content translucent), keep immersive experiences inside a safety boundary (~**1.5 m** from the
+  wearer's starting position, fading to passthrough as they approach it), and let people set their
+  own immersion level (**120–360°** is the documented default adjustable range) — visionOS's figures.
 - **Voice / conversational:** no visual scanning — keep options few (recall is costly), confirm
   destructive or irreversible actions, and front-load the outcome.
+
+Where a surface has documented values, they track **viewing distance and input precision** (Apple's
+figures below, as the best-documented exemplars — substitute your platform's own where published):
+
+| Surface | Body type (default / min) | Control size (default / min) | Spacing & safe zones |
+|---|---|---|---|
+| Desktop (pointer) | 13 pt / 10 pt | 28 × 28 / 20 × 20 pt | pointer precision permits the smaller sizes |
+| TV / 10-foot | **29 pt / 23 pt** | **66 × 66 / 56 × 56 pt** | inset content **60 pt** top/bottom and **80 pt** from the sides; pad focusables so the enlarged focus state never overlaps a neighbor |
+| Spatial / XR (gaze) | 17 pt / 12 pt | **60 × 60 / 28 × 28 pt** | control centers ≥ **60 pt** apart with ≥ **16 pt** clear space; interactive elements never overlap |
+| Wearable / watch | 16 pt / 12 pt | 44 × 44 / 28 × 28 pt | text enlargeable to **140 %** (vs **200 %** elsewhere — see Accessibility) |
+
+The pattern: 10-foot type runs roughly **2×** desktop sizes, and gaze or distance demands wider
+*spacing*, not just bigger targets.
 
 ---
 

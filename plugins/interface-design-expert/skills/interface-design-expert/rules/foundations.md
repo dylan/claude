@@ -3,42 +3,67 @@
 The nine dimensions are *conclusions*; these are the human invariants they're derived from. This is
 the engine the other lenses run on. Reach for it to reason about **novel, ambiguous, or high-stakes**
 problems where copying a convention isn't enough and you need to *derive* a solution. Read each
-invariant as **constraint → design move**.
+invariant as **constraint → design move**. Every lens principle cites its invariant by the
+*(italic tag)* on each bullet below; the **budgets** in SKILL.md (emphasis, interruption, motion,
+novelty, performance) are the aggregate form of *(attention)* and *(agency-trust)* — finite
+resources fail in total even when each spend looks fine alone.
 
 ## Invariants
 
-- **Working memory is small (~4 chunks).** Don't make people hold information across steps; chunk
-  and group, carry context forward, surface current state. *(The "7±2" figure is a misreading — it
-  is not a menu-length limit; the lever is chunking, not a magic number.)* → Layout, Nav/IA, Content
-- **Recognition beats recall.** Show options and state rather than making people remember names,
-  codes, or earlier screens. → Navigation/IA, Interaction
-- **Bigger and closer targets are faster (Fitts's law).** Size and place primary actions
+- **Working memory is small (~4 chunks).** *(memory)* Don't make people hold information across
+  steps; chunk and group, carry context forward, surface current state. *(The "7±2" figure is a
+  misreading — it is not a menu-length limit; the lever is chunking, not a magic number.)*
+  → Layout, Nav/IA, Content
+- **Recognition beats recall.** *(recognition)* Show options and state rather than making people
+  remember names, codes, or earlier screens. → Navigation/IA, Interaction
+- **Bigger and closer targets are faster (Fitts's law).** *(motor)* Size and place primary actions
   generously, exploit screen edges and corners, and expand hit areas beyond the visible shape.
   → Layout, Interaction
-- **More choices slow decisions (Hick's law).** Reduce or stage options; use progressive disclosure
-  and sensible defaults for dense decisions. → Navigation/IA, Interaction
-- **Affordance is a relationship; the cue you draw is the signifier.** What's possible depends on
-  the user's capabilities and context, so you must *supply* perceivable signifiers — never assume a
-  control "obviously" looks interactive. → Interaction, Accessibility, Consistency
-- **People bring mental models from elsewhere.** Match models users already hold, and give a
-  coherent, usefully-simplified conceptual model rather than exposing internals — innovate the
-  substance, keep the model learnable. → Navigation/IA, Consistency
-- **Grouping reads pre-attentively (Gestalt).** Proximity, similarity, alignment, and common region
-  register before reading — use them to encode hierarchy. → Layout, Typography
-- **Complexity is conserved (Tesler's law).** Every task has irreducible complexity; absorb it in
-  the system rather than pushing it onto the user. → Content, Navigation/IA
-- **Response time shapes perception.** Keep interactions within the flow-of-thought window; show
-  feedback when work runs long and progress-plus-cancel when it runs much longer (numbers in
-  platform-values). → Interaction/Motion
-- **Attention is selective and quality is cumulative.** People miss what's outside their focus (and
-  tune out ad-like regions); over a multi-step experience sustained quality matters — don't bank on
-  polishing only the peak and the ending. → Layout, Content, Interaction
-- **Beauty is functional, fast, and double-edged (aesthetic-usability effect).** Visual appeal is
-  judged in the first moments and raises *perceived* usability, credibility, trust, and tolerance
-  for friction — but it is mostly *perception* (not raw task speed), it decays with repeated use, and
-  it **masks real defects in evaluation**. → Invest in first-impression polish and derive beauty from
-  fluency levers (alignment, symmetry, contrast, coherent/prototypical form); never let it substitute
-  for working flows; test usability *separately from* appeal. → Aesthetics, Layout, Color
+- **More choices slow decisions (Hick's law).** *(choice)* Reduce or stage options; use progressive
+  disclosure and sensible defaults for dense decisions. → Navigation/IA, Interaction
+- **Affordance is a relationship; the cue you draw is the signifier.** *(signifiers)* What's
+  possible depends on the user's capabilities and context, so you must *supply* perceivable
+  signifiers — never assume a control "obviously" looks interactive. → Interaction, Accessibility,
+  Consistency
+- **People bring mental models from elsewhere.** *(models)* Match models users already hold, and
+  give a coherent, usefully-simplified conceptual model rather than exposing internals — innovate
+  the substance, keep the model learnable. → Navigation/IA, Consistency
+- **Grouping reads pre-attentively (Gestalt).** *(grouping)* Proximity, similarity, alignment, and
+  common region register before reading — use them to encode hierarchy. → Layout, Typography
+- **Complexity is conserved (Tesler's law).** *(complexity)* Every task has irreducible complexity;
+  absorb it in the system rather than pushing it onto the user. → Content, Navigation/IA
+- **Response time shapes perception.** *(timing)* Keep interactions within the flow-of-thought
+  window; show feedback when work runs long and progress-plus-cancel when it runs much longer
+  (numbers in platform-values). A blank view reads as *broken*, not busy — show something
+  immediately (placeholder, skeleton, last-known content) and swap in real content as it arrives.
+  → Interaction/Motion
+- **Attention is selective, finite, and quality is cumulative.** *(attention)* People miss what's
+  outside their focus (and tune out ad-like regions); emphasis only works by contrast with calm, so
+  it depletes — if everything is emphasized, nothing leads. Over a multi-step experience sustained
+  quality matters — don't bank on polishing only the peak and the ending. → Layout, Content,
+  Interaction, Aesthetics
+- **Beauty is functional, fast, and double-edged (aesthetic-usability effect).** *(fluency)* Visual
+  appeal is judged in the first moments and raises *perceived* usability, credibility, trust, and
+  tolerance for friction — but it is mostly *perception* (not raw task speed), it decays with
+  repeated use, and it **masks real defects in evaluation**. → Invest in first-impression polish and
+  derive beauty from fluency levers (alignment, symmetry, contrast, coherent/prototypical form);
+  never let it substitute for working flows; test usability *separately from* appeal. → Aesthetics,
+  Layout, Color
+- **Interruption is the norm.** *(interruption)* People switch contexts unpredictably and treat the
+  system as the keeper of their work — continuously preserve task state (content, settings,
+  position) and restore it on return so resuming costs recognition, not reconstruction; pause
+  time-based experiences on focus loss and resume them where they left off. → Interaction,
+  Navigation/IA, Content
+- **People learn by doing, in context.** *(learning)* Performing an action teaches and retains far
+  better than reading about it ahead of need — prefer just-in-time, one-concept-at-a-time guidance
+  and a consequence-free way to try things over front-loaded instruction that must be memorized.
+  → Content, Interaction, Navigation/IA
+- **People act under consent, and trust is finite.** *(agency-trust)* An interface borrows
+  attention, control, and data on credit: every interruption, takeover, permission ask, and broken
+  expectation spends trust that accrues slowly and drains fast. → Keep interruptions consent-based
+  and revocable; make takeover modes opt-in with an obvious exit; ask for the minimum at the moment
+  its value is clear; never spend trust on deception — and judge the *aggregate* spend, not each
+  instance. → Interaction, Content, Navigation/IA
 
 ## The generative method
 
@@ -65,9 +90,16 @@ Before committing to a pattern, check it against each relevant invariant:
 - **Mental model** — does it match what users already expect; is the conceptual model coherent?
 - **Grouping** — does visual structure encode the intended hierarchy pre-attentively?
 - **Complexity** — is irreducible complexity absorbed by the system, not dumped on the user?
-- **Timing** — does feedback arrive within the flow-of-thought window?
+- **Timing** — does feedback arrive within the flow-of-thought window, and is the view ever blank
+  while work happens?
 - **Attention** — does it survive selective attention; is quality sustained, not just peak/end?
 - **Accessibility** — does it hold for different capabilities, input modes, and assistive tech?
+- **Continuity** — if the user leaves mid-task (switch, close, interruption), is their state
+  preserved and restored exactly?
+- **Learning** — is guidance delivered at the moment of need and learnable by safe trial, rather
+  than front-loaded and memorized?
+- **Trust** — does anything interrupt, take over, or ask without consent and an obvious exit? Is
+  the *aggregate* interruption/emphasis spend within budget, not just each instance?
 
 ## Worked derivations
 
@@ -131,17 +163,20 @@ Before committing to a pattern, check it against each relevant invariant:
 
 | Invariant | Primary dimensions it governs |
 |---|---|
-| Working memory / chunking | Layout · Navigation & IA · Content |
-| Recognition over recall | Navigation & IA · Interaction |
-| Target size & distance (Fitts's law) | Layout · Interaction · Accessibility |
-| Choice cost (Hick's law) | Navigation & IA · Interaction |
-| Affordance & signifiers | Interaction · Accessibility · Consistency |
-| Mental & conceptual models | Navigation & IA · Consistency |
-| Pre-attentive grouping (Gestalt) | Layout · Typography |
-| Conservation of complexity (Tesler's law) | Content · Navigation & IA |
-| Response-time thresholds | Interaction & Motion |
-| Selective attention / cumulative quality | Layout · Content · Interaction |
-| Aesthetic-usability / processing fluency | Aesthetics · Layout · Color |
+| *(memory)* Working memory / chunking | Layout · Navigation & IA · Content |
+| *(recognition)* Recognition over recall | Navigation & IA · Interaction |
+| *(motor)* Target size & distance (Fitts's law) | Layout · Interaction · Accessibility |
+| *(choice)* Choice cost (Hick's law) | Navigation & IA · Interaction |
+| *(signifiers)* Affordance & signifiers | Interaction · Accessibility · Consistency |
+| *(models)* Mental & conceptual models | Navigation & IA · Consistency |
+| *(grouping)* Pre-attentive grouping (Gestalt) | Layout · Typography |
+| *(complexity)* Conservation of complexity (Tesler's law) | Content · Navigation & IA |
+| *(timing)* Response-time thresholds | Interaction & Motion |
+| *(attention)* Selective/finite attention · cumulative quality | Layout · Content · Interaction · Aesthetics |
+| *(fluency)* Aesthetic-usability / processing fluency | Aesthetics · Layout · Color |
+| *(interruption)* Interruption & state preservation | Interaction · Navigation & IA · Content |
+| *(learning)* Learning by doing / just-in-time guidance | Content · Interaction · Navigation & IA |
+| *(agency-trust)* Consent & finite trust | Interaction · Content · Navigation & IA |
 
 Hard numbers (target sizes, response-time thresholds, text spacing) live in
 [`platform-values.md`](platform-values.md), not here.

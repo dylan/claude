@@ -38,7 +38,7 @@
       "name": "interface-design-expert",
       "source": "./plugins/interface-design-expert",
       "description": "General-purpose interface design and review expert. Designs or critiques any UI — web, native desktop, mobile, games, terminal/TUI, voice — across nine design dimensions grounded in cognitive & perceptual foundations, with explicit floors-vs-dials tradeoff reasoning. Built to hand off to review agents, one lens per agent.",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "author": {
         "name": "Dylan"
       },

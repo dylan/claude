@@ -6,49 +6,48 @@ Drive type from a **system, not ad-hoc choices**. Resolve numbers via the value-
 
 ## Principles
 
-- **Use a tokenized type scale.** Define a finite set of roles (display → body → label/caption),
-  each a token bundling size + weight + line-height + tracking. Pick a ratio (a Major Second, 1.125,
-  is a safe default) and commit to it.
-- **No single product uses every style.** Select the few roles the content needs; ensure
-  *impactful contrast* between adjacent sizes (avoid near-duplicates).
-- **Enforce legible minimums.** Set a minimum size appropriate to viewing distance and device;
-  never ship body text below it.
-- **Respect user text-size preferences.** Support dynamic/scalable text (sp, rem) so type reflows
-  when users enlarge it — don't lock pixel sizes.
-- **Color type for legibility.** Keep running text neutral and high-contrast; reserve accent color
-  for primary actions and emphasis.
-- **Choose for legibility at size.** Prefer typefaces with a generous x-height and open counters
-  for body and UI text — they hold up at small sizes and lower contrast.
-- **Set comfortable line-height.** Longer lines and denser text need more leading; cramped leading
-  hurts readability as much as a too-small size.
-- **Make it scannable.** Break content into short, labeled chunks rather than walls of text, so the
-  eye can skim structure before reading.
-- **Constrain the measure (line length).** Treat it as a first-class choice alongside typeface and
-  size, and re-tune measure and line-height *together* whenever the face or size changes — they are
-  interdependent, not separate knobs.
-- **Make type conditional, not fixed.** Specify size, measure, and spacing as ranges that adapt to
-  viewport and context, and match fallback-font metrics so a substitute font doesn't shift the
-  layout.
-- **Use the right numerals and real glyphs.** Old-style figures in running prose, lining figures in
-  headings and caps, tabular figures in data columns; prefer true small-caps and super/subscripts
-  over faux-scaled ones.
-- **Design tables as text to be read.** Maximize data-to-ink (drop frames and zebra striping), size
-  columns to their content, left-align text and right/decimal-align numbers, and group with white
-  space rather than borders.
+- **Use a tokenized type scale.** *(grouping, fluency)* Define a finite set of roles (display →
+  body → label/caption), each a token bundling size + weight + line-height + tracking, stepped by a
+  ratio resolved via [platform-values.md](platform-values.md). Select only the roles the content
+  needs; keep adjacent steps visibly distinct — near-duplicates read as noise, not hierarchy.
+- **Minimize typefaces; give brand type the display roles.** *(fluency)* Pair a required brand face
+  (headlines, display) with a workhorse text face (often the platform's own) for body and captions.
+  A brand font must still clear the legibility bar at every size used and honor user text scaling —
+  brand never excuses either.
+- **Enforce legible minimums — a floor.** *(fluency)* Set a minimum size appropriate to viewing
+  distance and device; never ship body text below it.
+- **Respect user text-size preferences — a floor.** *(agency-trust)* Use scalable units (sp, rem)
+  so type reflows when users enlarge it; never lock pixel sizes.
+- **Color type for legibility.** *(attention, fluency)* Running text neutral and high-contrast;
+  accent reserved for emphasis and primary actions — an attention **budget**, judged in aggregate.
+- **Choose for legibility at size.** *(fluency)* Prefer generous x-height and open counters for
+  body and UI text — they hold up at small sizes and lower contrast.
+- **Treat weight as a legibility variable.** *(fluency)* Avoid hairline/thin weights for interface
+  text — thin strokes vanish at small sizes and low contrast. Weight and contrast trade off: if a
+  light face is required (e.g. brand display), compensate with larger size or more contrast.
+- **Constrain the measure; set line-height with it.** *(fluency)* Line length is a first-class
+  choice alongside face and size; longer lines and denser text need more leading. Re-tune measure
+  and line-height *together* whenever face or size changes — interdependent, not separate knobs.
+- **Make it scannable.** *(memory, grouping)* Short, labeled chunks rather than walls of text.
+- **Make type conditional, not fixed.** *(convention)* Size, measure, and spacing are ranges
+  adapting to viewport and context; match fallback-font metrics so substitutes don't shift layout.
+- **Align by reading direction, not left/right.** *(convention)* Specify alignment logically
+  (start/end) so text tracks the interface's reading direction in RTL locales. Short labels follow
+  the surrounding context's direction; longer paragraphs align to their *own* language's — a
+  paragraph end-aligned against its script makes the start of each line hard to find.
+- **Use the right numerals and real glyphs.** *(convention)* Old-style figures in running prose,
+  lining in headings/caps, tabular in data columns; true small-caps and super/subscripts, not faux.
+- **Design tables as text to be read.** *(convention)* Maximize data-to-ink: drop frames and zebra
+  striping, size columns to content, left-align text and right/decimal-align numbers, group with
+  white space rather than borders.
 
-## Review — what to look for
+## Checks beyond the principles
 
-*Weight these against the stated intent (see [`../SKILL.md`](../SKILL.md) → Tradeoffs & intent): floor breaches (accessibility, contrast, color-only meaning, focus, safety) are defects regardless of goal; dials are judged fit-or-misfit to the intent; opportunities (optional techniques) are judged "would this help here?" — their absence is not a finding.*
+*Weight per [SKILL.md → operating loop](../SKILL.md): floors and budget overdrafts are defects regardless of intent; dials are fit-to-thesis; an elective move's absence is never a finding.*
 
-- Is type drawn from a finite, tokenized scale, or ad-hoc sizes/weights?
-- Is there impactful contrast between adjacent sizes — any near-duplicate steps?
-- Is body text at or above a legible minimum, and does it scale with user preference (no locked px)?
-- Is running text neutral/high-contrast, with accent color reserved for emphasis?
-- Is the typeface legible at its smallest used size (x-height, open counters)?
-- Are line-height and measure comfortable (~45–75 characters), and re-tuned together?
-- Is content chunked and scannable, or walls of text?
-- Are numerals and glyphs correct for context (old-style / lining / tabular; true small-caps)?
-- Are data tables readable (high data-to-ink, content-sized columns, text vs number alignment)?
+- Render key screens at the largest text-scale setting and verify the hierarchy survives — the
+  relative weight/size/color distinctions between roles must still read, not just at the default.
+- Load with the primary font blocked and verify fallback-font metrics don't shift the layout.
 
 ## Values
 
