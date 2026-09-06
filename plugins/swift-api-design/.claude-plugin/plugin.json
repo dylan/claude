@@ -1,7 +1,7 @@
 {
   "name": "swift-api-design",
   "description": "Swift API design reviewer. Enforces Swift API Design Guidelines — naming, argument labels, fluency, documentation, and conventions — across any Swift code at any scope level.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Dylan"
   },
