@@ -1,5 +1,12 @@
 # Changelog
 
+## nato-name v1.0.0 — 2026-09-06
+
+- **New plugin:** placeholder project namer
+- `/nato-name` picks an unused NATO reporting name for a new project, alphabetical so A-names go first
+- Checks the current directory and skips any name already used as a whole word in an entry
+- Name list covers Wikipedia's NATO reporting names for aircraft, missiles, and Soviet/Russian submarine and ship classes
+
 ## interface-design-expert v1.1.0 — 2026-06-07
 
 - Named a third principle posture — **opportunities** (tools applied when they help) alongside floors (always hold) and dials (tune to intent); an opportunity's absence is never a defect

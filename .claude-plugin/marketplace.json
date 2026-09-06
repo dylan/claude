@@ -43,6 +43,16 @@
         "name": "Dylan"
       },
       "keywords": ["design", "ui", "ux", "design-review", "design-system", "accessibility", "aesthetics", "information-architecture", "cross-platform"]
+    },
+    {
+      "name": "nato-name",
+      "source": "./plugins/nato-name",
+      "description": "Placeholder project namer. Picks an unused NATO reporting name (Flanker, Akula, Atoll, ...) and checks the current directory so the name isn't already taken.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dylan"
+      },
+      "keywords": ["naming", "codename", "project-name", "nato", "scaffolding"]
     }
   ]
 }

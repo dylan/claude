@@ -103,3 +103,13 @@ A multi-lens instrument for **designing** and **reviewing** interfaces — web, 
 - **First-principles foundations** — derives novel solutions from human invariants (working memory, Fitts/Hick, Gestalt, the aesthetic-usability effect) rather than copying conventions.
 
 When the work targets exactly one Apple or web platform, defer to that platform's specific skill instead.
+
+## nato-name
+
+Placeholder project namer — picks an unused NATO reporting name so you can start building before you've named the thing.
+
+```sh
+/plugin install nato-name@dylan
+```
+
+**`/nato-name` skill** — Lists every NATO reporting name (Flanker, Akula, Atoll, Kitchen, ...) not already used in the current directory and offers the first one. The list is alphabetical, so A-names go first and the letter advances as you use them up. Ask for a letter to filter.
