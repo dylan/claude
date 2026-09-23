@@ -1,7 +1,7 @@
 {
   "name": "c64",
   "description": "Commodore 64 demoscene optimizer and hardware reference. The c64 agent plans and reviews 6502/6510 code for cycle counts, raster timing and memory layout on any toolchain; the c64-hardware skill holds exact opcode, VIC-II, CIA, SID and memory-map facts, interrupt patterns, measured algorithms and modern tooling.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Dylan"
   },

@@ -1,5 +1,12 @@
 # Changelog
 
+## c64 v1.1.0 — 2026-09-23
+
+- `llvm-mos.md`: on zig-mos 0.17, a callee holding inline assembly moves its callers onto the soft stack; a measured case where that cost more than the faster loops saved
+- `llvm-mos.md`: four inline-assembly traps found while prototyping a backdrop decoder: out-of-range branches that link silently to a wrapped address, a pinned input dropped when also clobbered, tables named by an assembly symbol, and self-modified operands
+- `llvm-mos.md`: corrected the zig-mos clobber syntax to a struct of flags
+- The `c64` agent prototypes a hand-written routine in a scratch copy and compares the whole frame and its callers' sizes before a plan commits to it
+
 ## c64 v1.0.0 — 2026-09-23
 
 - **New plugin:** Commodore 64 demoscene optimizer and hardware reference
