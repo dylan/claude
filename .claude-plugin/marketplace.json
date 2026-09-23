@@ -53,6 +53,16 @@
         "name": "Dylan"
       },
       "keywords": ["naming", "codename", "project-name", "nato", "scaffolding"]
+    },
+    {
+      "name": "c64",
+      "source": "./plugins/c64",
+      "description": "Commodore 64 demoscene optimizer and hardware reference. The c64 agent plans and reviews 6502/6510 code for cycle counts, raster timing and memory layout on any toolchain; the c64-hardware skill holds exact opcode, VIC-II, CIA, SID and memory-map facts, interrupt patterns, measured algorithms and modern tooling.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dylan"
+      },
+      "keywords": ["c64", "commodore-64", "6502", "6510", "assembly", "demoscene", "retro", "vic-ii", "sid", "optimization"]
     }
   ]
 }

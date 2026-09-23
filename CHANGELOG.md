@@ -1,5 +1,14 @@
 # Changelog
 
+## c64 v1.0.0 — 2026-09-23
+
+- **New plugin:** Commodore 64 demoscene optimizer and hardware reference
+- `c64` agent plans and reviews 6502/6510 code on any toolchain: cycle budgets, raster timing, memory layout, real-hardware resilience; read-only, with concrete rewrites
+- `c64-hardware` skill: opcode tables, VIC-II, CIA, SID and memory-map references, interrupt procedures, code patterns, measured algorithms and modern tooling, loaded on demand
+- `llvm-mos.md`: imaginary registers, zero page, static stack and reentrancy, calling convention, interrupt attributes, C64 start-up and restart, linker scripts, constructs that compile badly, and the pitfalls of rebuilding the SDK for zig-mos
+- Practical lessons from a C64 game project: a pure core with the hardware at the edges, a VICE test harness, RESTORE through a ROM `rti`, once-per-frame waits, keyboard scanning
+- The agent preloads the skill and takes every number from it rather than from memory
+
 ## nato-name v1.0.0 — 2026-09-06
 
 - **New plugin:** placeholder project namer

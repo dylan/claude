@@ -113,3 +113,28 @@ Placeholder project namer — picks an unused NATO reporting name so you can sta
 ```
 
 **`/nato-name` skill** — Lists every NATO reporting name (Flanker, Akula, Atoll, Kitchen, ...) not already used in the current directory and offers the first one. The list is alphabetical, so A-names go first and the letter advances as you use them up. Ask for a letter to filter.
+
+## c64
+
+Commodore 64 demoscene optimizer and hardware reference, for any C64 project and toolchain: hand-written assembly (ca65, ACME, KickAssembler, 64tass, DASM), C through cc65 or llvm-mos, or Zig through zig-mos.
+
+```sh
+/plugin install c64@dylan
+```
+
+**`c64` agent** — Plans and reviews 6502/6510 code the way a demo group reviews a routine before the party deadline. Before you write a hot routine, a raster or interrupt scheme, a memory map or an effect, it chooses the approach within a cycle and byte budget. After a change, it reviews the code for cycle counts, raster timing, memory layout and real-hardware resilience, and returns findings with concrete rewrites. It learns each project's toolchain and memory map from the project's own briefing, and it is read-only.
+
+**`c64-hardware` skill** — Exact numbers instead of recalled ones, preloaded by the agent and available to any session:
+
+| Reference | Covers |
+|-----------|--------|
+| `6510.md` | All 256 opcodes with cycle counts, grouped by stability; NMOS quirks |
+| `vic-ii.md` | Registers, banks, display modes, raster-line cycle timing, badlines, sprites, border tricks |
+| `cia.md`, `sid.md` | Timers, interrupts, keyboard and joysticks; SID registers, pitch and chip differences |
+| `memory-map.md` | Banking, vectors, KERNAL interrupt costs, zero-page use, decruncher footprints |
+| `interrupts.md` | Raster interrupt setup, acknowledging, missed lines, NMI ownership, stable-raster methods |
+| `patterns.md` | Raster chains written as one routine, protothreads, long work inside interrupts |
+| `algorithms.md` | Measured crunchers, loaders, multiply, random numbers, multiplexer sorts, and open opportunities |
+| `llvm-mos.md` | llvm-mos and zig-mos: zero page, static stack, calling convention, interrupts, start-up, what compiles badly |
+| `modern-practice.md` | Host-side cycle tests, headless VICE, a VICE test harness, Ultimate 64 REST API, build-time assertions |
+
