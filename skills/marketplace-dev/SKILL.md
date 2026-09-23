@@ -5,10 +5,6 @@ description: Use when working in this plugin marketplace repository — adding p
 
 # Marketplace Development
 
-## Architecture Reference
-
-Consult `docs/codebase-architecture.md` before grepping. It has file inventory, common task recipes (add plugin, update plugin, bump versions, test locally), and `file:line` refs.
-
 ## Hard Rules
 
 1. **Version sync** — Plugin versions live in two files that must match: `plugins/<name>/.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`. The plugin manifest wins silently if they differ.
@@ -43,5 +39,3 @@ Always run before committing:
 ```sh
 claude plugin validate .
 ```
-
-After changes, update `docs/codebase-architecture.md` if you added, renamed, or removed source files.
